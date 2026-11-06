@@ -105,6 +105,16 @@ section.page{padding-block:48px 72px}
 .rrow .t{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;font-variant-numeric:tabular-nums}
 .rrow .bars{display:flex;gap:2px;height:9px}
 .tooltip{font-size:14px;min-height:22px}
+.notice.live{background:var(--soft);border-color:var(--line);color:var(--ink)}
+.archive{padding:0}
+.archive>summary{cursor:pointer;padding:16px 18px;font-weight:600;display:flex;gap:10px;align-items:center;min-height:48px}
+.archive>summary::-webkit-details-marker{display:none}
+.archive>summary::before{content:"\25B8";color:var(--muted);transition:transform .15s}
+.archive[open]>summary::before{transform:rotate(90deg)}
+.archive>summary .muted{font-weight:400;font-size:14px}
+.archive-body{padding:0 18px 18px;display:flex;flex-direction:column;gap:20px}
+.archive-body .grid{opacity:.85}
+.small-src{font-size:12px;color:var(--muted);margin:10px 0 0}
 
 /* about */
 .two{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:40px;align-items:start}
@@ -197,7 +207,7 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
       <h1>Let's Move <em>Iowa</em></h1>
       <p>The MoveYourWayIA campaign is a grassroots effort to make Iowa a more active state. You know the benefits and that is why you are here! Help spread the word by making a pledge and challenging others to do the same.</p>
       <div class="ctas">
-        <a class="btn gold" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Make a Pledge and Join</a>
+        <a class="btn gold" href="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform" target="_blank" rel="noopener">Make a Pledge</a>
         <a class="btn ghost" href="https://app.smartsheet.com/b/form/01a18d860faa76158645570ff987719d" target="_blank" rel="noopener">Enroll My Organization</a>
       </div>
       </div>
@@ -210,10 +220,10 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
       <ol class="steps" style="margin-bottom:28px">
         <li><div><b>Make your pledge</b><span class="muted">Finish the sentence: <em>“This week, I will get active by…”</em> A walk at lunch, a bike ride, dancing in the kitchen. Pick something real that fits your week.</span></div></li>
         <li><div><b>Share it with someone</b><span class="muted">Tell a friend, text a coworker or post it. Sharing with one person counts, and posting publicly is up to you.</span></div></li>
-        <li><div><b>Join and log it on GivePulse</b><span class="muted">Join Move Your Way Iowa, choose your county and record your pledge. If you're new to GivePulse you'll create a free account first. Your county then shows up on the map.</span></div></li>
+        <li><div><b>Submit the pledge form</b><span class="muted">Fill out the short <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform" target="_blank" rel="noopener">pledge form</a>: choose an individual or organizational pledge and your county. Your county then shows up on the map.</span></div></li>
       </ol>
       <div class="res">
-        <div class="card"><span class="tag">Individuals</span><h3>Make Your Pledge</h3><p class="muted" style="margin:0">Take action and join the Movement to Move. The act is simple but significant!</p><p class="muted" style="margin:0">Your pledge can be made on the state level page or the county page of your choice. Click the link below to learn more. Select ‘Subgroups’ to find your county. Select the Resources tab for details. Make the Move!</p><a href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Pledge on GivePulse</a></div>
+        <div class="card"><span class="tag">Individuals</span><h3>Make Your Pledge</h3><p class="muted" style="margin:0">Take action and join the Movement to Move. The act is simple but significant!</p><p class="muted" style="margin:0">Submit your pledge with the short pledge form and choose your county. It takes about a minute. Make the Move!</p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform" target="_blank" rel="noopener">Make your pledge</a></div>
         <div class="card"><span class="tag">Organizations</span><h3>Bring your people</h3><p class="muted" style="margin:0">Sign on as an Affiliate to help share out the MoveYourWay messaging. This is ideal for worksites, schools, churches and other organizations. Our CCPH team will give you everything you need to get started. Make the Move!</p><a href="https://app.smartsheet.com/b/form/01a18d860faa76158645570ff987719d" target="_blank" rel="noopener">Get your group involved</a></div>
         <div class="card"><span class="tag">Campuses</span><h3>Enroll Your Campus</h3><p class="muted" style="margin:0">The MoveYourWayIA campaign can be extended to support active living and related outreach on college campuses. Specific strategies and toolkits are available for campus groups or leaders interested in bringing the MoveYourWayIA to their campus. Affiliated campuses will have their own GivePulse pages but with programming managed locally. It is an easy to use online tool and the <a href="https://iastate.givepulse.com/group/2200261-moveyourwayisu" target="_blank" rel="noopener">MoveYourWayISU</a> team can answer questions that might come up.</p><a href="https://app.smartsheet.com/b/form/44adc4f62cf24751a2937b98611e2cce" target="_blank" rel="noopener">Enroll Your Campus</a></div>
         <div class="card"><span class="tag">Counties</span><h3>Empower Your County</h3><p class="muted" style="margin:0">Sign up your county to be formally connected as a county partner in the MoveYourWayIA campaign. This form is for county-level leaders (County Health, County Extension or County Coalitions) positioned to guide and support county level programming through GivePulse. Our CCPH team will continue to manage the page until you are ready to take the keys! Make the Move!</p><a href="https://app.smartsheet.com/b/form/01a0eed8d3be77ff8e42032eaccc5b00" target="_blank" rel="noopener">Learn about County Level Support</a></div>
@@ -234,20 +244,19 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
         <h2 class="title" id="map-h">Statewide pledge map</h2>
         <p class="lede muted" style="margin:0">Every pledge is counted in the county where it was made. Find your county, then help it climb.</p>
       </div>
-      <div class="notice" role="note">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-        <span><strong>Sample data, not live counts.</strong> The map will fill from GivePulse county exports once the data connection is in place.</span>
-      </div>
-      <div class="stats" id="stats"></div>
+      <div class="notice live" role="status" id="liveStatus"><span>Loading live counts&hellip;</span></div>
+      <div class="ctas" style="margin:0"><a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform" target="_blank" rel="noopener">Make a Pledge</a></div>
+      <div data-map="live" style="display:flex;flex-direction:column;gap:20px">
+      <div class="stats" data-r="stats"></div>
       <div class="controls">
         <div style="display:flex;gap:9px;align-items:center"><span class="lbl">Measure</span>
-          <div class="seggrp" role="group" aria-label="Measure">
+          <div class="seggrp" role="group" aria-label="Live map measure">
             <button type="button" class="seg" data-m="both">Both</button>
             <button type="button" class="seg" data-m="ind">Individuals</button>
             <button type="button" class="seg" data-m="org">Organizations</button>
           </div></div>
         <div style="display:flex;gap:9px;align-items:center"><span class="lbl">Scale</span>
-          <div class="seggrp" role="group" aria-label="Scale">
+          <div class="seggrp" role="group" aria-label="Live map scale">
             <button type="button" class="seg" data-k="raw">Raw count</button>
             <button type="button" class="seg" data-k="per">Per 1,000 residents</button>
           </div></div>
@@ -255,10 +264,66 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
       <div class="maprow">
         <div class="mapcol">
           <div class="card gridbox">
-            <div class="tooltip" id="tip" aria-live="polite"><span class="muted">Hover or tap a county for its count.</span></div>
-            <div class="grid" id="grid" role="list" aria-label="Iowa counties by pledge activity"></div>
+            <div class="tooltip" data-r="tip" aria-live="polite"><span class="muted">Hover or tap a county for its count.</span></div>
+            <div class="grid" data-r="grid" role="list" aria-label="Live map: Iowa counties by pledge activity"></div>
             <div class="legend">
-              <div><div class="lbl" id="legendTitle" style="margin-bottom:7px"></div><div class="sws" id="legend"></div></div>
+              <div><div class="lbl" data-r="legendTitle" style="margin-bottom:7px"></div><div class="sws" data-r="legend"></div></div>
+              <div class="key"><i style="background:var(--zero)"></i>No pledges yet</div>
+            </div>
+            <p class="small-src">Per 1,000 residents uses U.S. Census Bureau Vintage 2025 county population estimates.</p>
+          </div>
+        </div>
+        <aside class="rail">
+          <div class="card rank">
+            <h3>Top 8 counties</h3>
+            <div class="lbl" data-r="rankNote"></div>
+            <div data-r="rank"></div>
+          </div>
+          <div class="card rank">
+            <h3>Small counties can win</h3>
+            <p style="margin:6px 0 0;font-size:14px" class="muted">Switch to <b>Per 1,000 residents</b> to see which counties lead for their size. Only leaders are listed. There is no bottom ten.</p>
+          </div>
+          <div class="card rank">
+            <h3>How a pledge reaches the map</h3>
+            <ol style="margin:8px 0 0;padding-left:20px;font-size:14px;display:grid;gap:6px" class="muted">
+              <li>Click <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform" target="_blank" rel="noopener">Make a Pledge</a> and fill out the short form.</li>
+              <li>Choose an individual or organizational pledge and your county.</li>
+              <li>Your pledge is added to your county's count automatically, usually within a few minutes.</li>
+              <li>Only county totals appear on the map. Email addresses are never shown.</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+      </div>
+
+      <details class="card archive">
+        <summary>Archived: the GivePulse pilot map <span class="muted">Sample data, no longer updated</span></summary>
+        <div class="archive-body" data-map="pilot">
+          <div class="notice" role="note">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 2.4 17a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+            <span><strong>Archived pilot.</strong> This first version of the tracker planned to fill from GivePulse county exports. It shows sample numbers, not real pledges, and is kept for reference only.</span>
+          </div>
+      <div class="stats" data-r="stats"></div>
+      <div class="controls">
+        <div style="display:flex;gap:9px;align-items:center"><span class="lbl">Measure</span>
+          <div class="seggrp" role="group" aria-label="Pilot map measure">
+            <button type="button" class="seg" data-m="both">Both</button>
+            <button type="button" class="seg" data-m="ind">Individuals</button>
+            <button type="button" class="seg" data-m="org">Organizations</button>
+          </div></div>
+        <div style="display:flex;gap:9px;align-items:center"><span class="lbl">Scale</span>
+          <div class="seggrp" role="group" aria-label="Pilot map scale">
+            <button type="button" class="seg" data-k="raw">Raw count</button>
+            <button type="button" class="seg" data-k="per">Per 1,000 residents</button>
+          </div></div>
+      </div>
+      <div class="maprow">
+        <div class="mapcol">
+          <div class="card gridbox">
+            <div class="tooltip" data-r="tip" aria-live="polite"><span class="muted">Hover or tap a county for its count.</span></div>
+            <div class="grid" data-r="grid" role="list" aria-label="Pilot map: Iowa counties by pledge activity"></div>
+            <div class="legend">
+              <div><div class="lbl" data-r="legendTitle" style="margin-bottom:7px"></div><div class="sws" data-r="legend"></div></div>
               <div class="key"><i style="background:var(--zero)"></i>Reporting, no pledges yet</div>
               <div class="key"><i style="background:var(--none);border:1px dashed var(--none-line)"></i>Not yet reporting</div>
             </div>
@@ -267,15 +332,11 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
         <aside class="rail">
           <div class="card rank">
             <h3>Top 8 counties</h3>
-            <div class="lbl" id="rankNote"></div>
-            <div id="rank"></div>
+            <div class="lbl" data-r="rankNote"></div>
+            <div data-r="rank"></div>
           </div>
           <div class="card rank">
-            <h3>Small counties can win</h3>
-            <p style="margin:6px 0 0;font-size:14px" class="muted">Switch to <b>Per 1,000 residents</b> to see which counties lead for their size. Only leaders are listed. There is no bottom ten.</p>
-          </div>
-          <div class="card rank">
-            <h3>How a pledge reaches the map</h3>
+            <h3>How a pledge reached the pilot map</h3>
             <ol style="margin:8px 0 0;padding-left:20px;font-size:14px;display:grid;gap:6px" class="muted">
               <li>You pledge on GivePulse and pick your county.</li>
               <li>Your pledge is recorded with that county.</li>
@@ -285,6 +346,8 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
           </div>
         </aside>
       </div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -373,7 +436,7 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
         <svg class="badge" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="var(--line)" stroke-width="4"/><path d="M21 33l7 7 15-16" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="step">Level 1 · Join the movement</div><h3>Mover</h3>
         <p class="quote">“I made my move, shared it, and connected with the movement.”</p>
-        <ul><li>Make a pledge: “This week, I will get active by…”</li><li>Share it with at least one person. Private counts.</li><li>Join GivePulse and log your pledge with your county.</li></ul>
+        <ul><li>Make a pledge: “This week, I will get active by…”</li><li>Share it with at least one person. Private counts.</li><li>Submit the pledge form with your county.</li></ul>
         <p class="muted small">Recognition: a welcome from the team. No training, quotas or hours.</p>
       </div>
       <div class="card lvl">
@@ -407,7 +470,7 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
     </div>
     <p class="muted small" style="margin-top:18px">Badge artwork shown is concept design and will be finalized before launch.</p>
     <div class="ctas" style="margin-top:28px">
-      <a class="btn solid" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Start with a pledge</a>
+      <a class="btn solid" href="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform" target="_blank" rel="noopener">Start with a pledge</a>
       <a class="btn solid" href="https://iastate.givepulse.com/group/2200261-moveyourwayisu" target="_blank" rel="noopener">ISU students: join MoveYourWayISU</a>
     </div>
   </div>
@@ -429,6 +492,9 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
   addEventListener("hashchange",show); show();
 
   /* ---------- tracker ---------- */
+  /* Live pledges: the Google Form fills a Google Sheet, whose "Totals" tab is published as CSV and read here. */
+  const PLEDGE_FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLSdZRu95ANJg97Na8B8cGUS3YoKiyPmi7yhBr-aafTbfSiYjbA/viewform";
+  const PLEDGE_TOTALS_CSV="https://docs.google.com/spreadsheets/d/e/2PACX-1vRIjkNdrVXJzZInDNYW0szmNq16Q32J9m3S7PQXexPKeGBH9BUvdaMzIvkhKbSvmVP2kU5Nqd81kHsw/pub?gid=0&single=true&output=csv";
   const G=[["Lyon","LYO",0,0],["Osceola","OSC",0,1],["Dickinson","DIC",0,2],["Emmet","EMM",0,3],["Kossuth","KOS",0,4,2],["Winnebago","WNB",0,5],["Worth","WOR",0,6],["Mitchell","MIT",0,7],["Howard","HOW",0,8],["Winneshiek","WNS",0,9],["Allamakee","ALL",0,10],
   ["Sioux","SIO",1,0],["O'Brien","OBR",1,1],["Clay","CLA",1,2],["Palo Alto","PAL",1,3],["Hancock","HAN",1,5],["Cerro Gordo","CGO",1,6],["Floyd","FLO",1,7],["Chickasaw","CHI",1,8],["Fayette","FAY",1,9,2],["Clayton","CLY",1,10,2],
   ["Plymouth","PLY",2,0],["Cherokee","CHE",2,1],["Buena Vista","BVI",2,2],["Pocahontas","POC",2,3],["Humboldt","HUM",2,4],["Wright","WRI",2,5],["Franklin","FRA",2,6],["Butler","BUT",2,7],["Bremer","BRE",2,8],
@@ -438,59 +504,126 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
   ["Pottawattamie","POT",6,0],["Cass","CAS",6,1],["Adair","ADR",6,2],["Madison","MAD",6,3],["Warren","WAR",6,4],["Marion","MAR",6,5],["Mahaska","MAH",6,6],["Keokuk","KEO",6,7],["Washington","WAS",6,8],["Louisa","LOU",6,9],["Muscatine","MUS",6,10],["Scott","SCO",6,11],
   ["Mills","MIL",7,0],["Montgomery","MGY",7,1],["Adams","ADM",7,2],["Union","UNI",7,3],["Clarke","CLK",7,4],["Lucas","LUC",7,5],["Monroe","MNR",7,6],["Wapello","WAP",7,7],["Jefferson","JEF",7,8],["Henry","HEN",7,9],["Des Moines","DSM",7,10],
   ["Fremont","FRE",8,0],["Page","PAG",8,1],["Taylor","TAY",8,2],["Ringgold","RIN",8,3],["Decatur","DEC",8,4],["Wayne","WAY",8,5],["Appanoose","APP",8,6],["Davis","DAV",8,7],["Van Buren","VBU",8,8],["Lee","LEE",8,9]];
-  /* sample: county -> [individuals, organizations, population, new this cycle] */
-  const D={"Story":[42,6,100520,7],"Polk":[88,11,492401,14],"Linn":[35,4,229913,5],"Scott":[21,3,174669,2],"Johnson":[54,7,152854,9],"Black Hawk":[19,2,131228,3],"Woodbury":[11,1,105473,1],"Dubuque":[16,2,99266,2],"Dallas":[23,3,99570,4],"Warren":[17,2,52782,2],"Marshall":[9,1,40105,1],"Hardin":[6,1,16882,0],"Boone":[14,2,26675,3],"Cerro Gordo":[8,1,42686,1],"Wapello":[4,1,35313,0],"Pottawattamie":[13,2,93633,2],"Jasper":[7,1,37185,1],"Clinton":[5,0,46491,0],"Muscatine":[6,1,42854,1],"Webster":[10,1,37872,2],"Tama":[3,1,17139,1],"Delaware":[4,0,17498,0],"Sioux":[6,2,35872,2],"Winneshiek":[5,1,19864,1],"Ringgold":[2,0,4894,1],"Fremont":[3,0,6738,0],"Adams":[1,0,3561,1]};
+  /* U.S. Census Bureau, Vintage 2025 county population estimates: https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/counties/totals/co-est2025-alldata.csv */
+  const POP={"Lyon":12354,"Osceola":5980,"Dickinson":18077,"Emmet":9107,"Kossuth":14322,"Winnebago":10251,"Worth":7338,"Mitchell":10650,"Howard":9415,"Winneshiek":19733,"Allamakee":14238,"Sioux":36774,"O'Brien":14220,"Clay":16202,"Palo Alto":8899,"Hancock":10528,"Cerro Gordo":42372,"Floyd":14901,"Chickasaw":11663,"Fayette":19047,"Clayton":16845,"Plymouth":25697,"Cherokee":11369,"Buena Vista":20449,"Pocahontas":6819,"Humboldt":9409,"Wright":12801,"Franklin":9868,"Butler":14049,"Bremer":25296,"Woodbury":106649,"Ida":6777,"Sac":9525,"Calhoun":9562,"Webster":36838,"Hamilton":14944,"Hardin":16455,"Grundy":12361,"Black Hawk":131532,"Buchanan":20883,"Delaware":17674,"Dubuque":99381,"Monona":8539,"Crawford":16237,"Carroll":20303,"Greene":8658,"Boone":26799,"Story":101291,"Marshall":39890,"Tama":16796,"Benton":26004,"Linn":232028,"Jones":21253,"Jackson":19288,"Harrison":14623,"Shelby":11689,"Audubon":5509,"Guthrie":10782,"Dallas":118457,"Polk":516546,"Jasper":38153,"Poweshiek":18368,"Iowa":16504,"Johnson":160044,"Cedar":18359,"Clinton":46002,"Pottawattamie":92996,"Cass":12960,"Adair":7403,"Madison":17270,"Warren":57331,"Marion":34192,"Mahaska":21880,"Keokuk":9797,"Washington":22667,"Louisa":10416,"Muscatine":41853,"Scott":175259,"Mills":14793,"Montgomery":10002,"Adams":3617,"Union":11829,"Clarke":9574,"Lucas":8847,"Monroe":7406,"Wapello":35210,"Jefferson":15291,"Henry":19349,"Des Moines":38077,"Fremont":6522,"Page":14856,"Taylor":5835,"Ringgold":4642,"Decatur":7655,"Wayne":6738,"Appanoose":12077,"Davis":9230,"Van Buren":7131,"Lee":32306};
+  /* archived pilot sample: county -> [individuals, organizations, population, new this cycle] */
+  const PILOT={"Story":[42,6,100520,7],"Polk":[88,11,492401,14],"Linn":[35,4,229913,5],"Scott":[21,3,174669,2],"Johnson":[54,7,152854,9],"Black Hawk":[19,2,131228,3],"Woodbury":[11,1,105473,1],"Dubuque":[16,2,99266,2],"Dallas":[23,3,99570,4],"Warren":[17,2,52782,2],"Marshall":[9,1,40105,1],"Hardin":[6,1,16882,0],"Boone":[14,2,26675,3],"Cerro Gordo":[8,1,42686,1],"Wapello":[4,1,35313,0],"Pottawattamie":[13,2,93633,2],"Jasper":[7,1,37185,1],"Clinton":[5,0,46491,0],"Muscatine":[6,1,42854,1],"Webster":[10,1,37872,2],"Tama":[3,1,17139,1],"Delaware":[4,0,17498,0],"Sioux":[6,2,35872,2],"Winneshiek":[5,1,19864,1],"Ringgold":[2,0,4894,1],"Fremont":[3,0,6738,0],"Adams":[1,0,3561,1]};
   const BINS=[["var(--b0)","#0B0B0B"],["var(--b1)","#0B0B0B"],["var(--b2)","#FFFFFF"],["var(--b3)","#FFFFFF"],["var(--b4)","#FFFFFF"]];
-  const S={m:"both",k:"raw"};
   const fmtN=x=>x.toLocaleString("en-US");
-  const val=r=>{const raw=S.m==="ind"?r[0]:S.m==="org"?r[1]:r[0]+r[1];return S.k==="per"?raw/r[2]*1000:raw};
-  const fmt=v=>S.k==="per"?v.toFixed(2):fmtN(v);
+  const esc=x=>String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+  const ready=u=>/^https:\/\//.test(u);
 
-  function render(){
-    document.querySelectorAll("[data-m]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===S.m));
-    document.querySelectorAll("[data-k]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===S.k));
-    const rows=Object.keys(D).map(n=>({n,r:D[n],v:val(D[n])}));
-    const act=rows.filter(x=>x.v>0).map(x=>x.v).sort((a,b)=>a-b);
-    const th=[1,2,3,4].map(i=>act[Math.floor(act.length*i/5)]);
-    const bi=v=>{let b=0;while(b<4&&v>=th[b])b++;return b};
-    const per=S.k==="per";
-
-    const t=rows.reduce((a,x)=>(a.i+=x.r[0],a.o+=x.r[1],a.d+=x.r[3],a),{i:0,o:0,d:0});
-    document.getElementById("stats").innerHTML=[
-      ["Pledges statewide",fmtN(t.i+t.o),""],["Individuals",fmtN(t.i),"var(--ind)"],["Organizations",fmtN(t.o),"var(--org)"],
-      ["Counties reporting",rows.length+'<span style="font-size:18px;font-weight:500;color:var(--muted)"> of 99</span>',""],["New this cycle","+"+fmtN(t.d),""]
-    ].map(s=>`<div class="card stat"><div class="k">${s[2]?`<i class="sw" style="background:${s[2]}"></i>`:""}${s[0]}</div><div class="v">${s[1]}</div></div>`).join("");
-
-    document.getElementById("grid").innerHTML=G.map(([name,code,r,c,sp])=>{
-      const pos=`grid-column:${c+1};grid-row:${r+1}${sp?" / span "+sp:""};`;
-      const rec=D[name];
-      if(!rec) return `<div class="tile" role="listitem" tabindex="0" data-tip="${name} County: not yet reporting" style="${pos}background:var(--none);color:var(--muted);border:1px dashed var(--none-line)" aria-label="${name} County, not yet reporting"><span class="c">${code}</span><span class="n">–</span></div>`;
-      const v=val(rec); const [bg,ink]=v>0?BINS[bi(v)]:["var(--zero)","var(--muted)"];
-      const unit=per?" per 1,000 residents":(v===1?" pledge":" pledges");
-      const tip=`${name} County: ${fmt(v)}${unit}`;
-      return `<div class="tile" role="listitem" tabindex="0" data-tip="${tip}" style="${pos}background:${bg};color:${ink}" aria-label="${tip}"><span class="c">${code}</span><span class="n">${fmt(v)}</span></div>`;
-    }).join("");
-
-    const lbl=i=>per?(i===0?"<"+th[0].toFixed(2):i===4?th[3].toFixed(2)+"+":th[i-1].toFixed(2)+"–"+th[i].toFixed(2))
-      :(i===0?"1–"+(th[0]-1):i===4?th[3]+"+":(th[i-1]===th[i]-1?th[i-1]:th[i-1]+"–"+(th[i]-1)));
-    document.getElementById("legend").innerHTML=BINS.map((b,i)=>`<div><span style="background:${b[0]}"></span>${lbl(i)}</div>`).join("");
-    document.getElementById("legendTitle").textContent=per?"Pledges per 1,000 residents":"Pledges counted";
-
-    const mw=S.m==="ind"?"Individual pledges":S.m==="org"?"Organization pledges":"All pledges";
-    document.getElementById("rankNote").textContent=mw+", "+(per?"per 1,000 residents":"by raw count");
-    const top=rows.slice().sort((a,b)=>b.v-a.v).slice(0,8); const max=top[0].v||1;
-    document.getElementById("rank").innerHTML=top.map(x=>{
-      const a=S.m==="org"?0:(per?x.r[0]/x.r[2]*1000:x.r[0]); const b=S.m==="ind"?0:(per?x.r[1]/x.r[2]*1000:x.r[1]);
-      const bars=(a?`<div style="flex:0 0 ${a/max*100}%;background:var(--ind);border-radius:2px"></div>`:"")+(b?`<div style="flex:0 0 ${b/max*100}%;background:var(--org);border-radius:2px"></div>`:"");
-      return `<div class="rrow"><div class="t"><span>${x.n}</span><b>${fmt(x.v)}</b></div><div class="bars">${bars}</div></div>`;
-    }).join("");
+  /* up to five color steps from the counties that have pledges; fewer when values repeat */
+  function edgesFor(vals){
+    if(!vals.length) return [];
+    const e=[1,2,3,4].map(i=>vals[Math.floor(vals.length*i/5)]);
+    return e.filter((x,i)=>x>vals[0]&&(i===0||x>e[i-1]));
   }
-  document.querySelectorAll("[data-m]").forEach(b=>b.addEventListener("click",()=>{S.m=b.dataset.m;render()}));
-  document.querySelectorAll("[data-k]").forEach(b=>b.addEventListener("click",()=>{S.k=b.dataset.k;render()}));
-  const tip=document.getElementById("tip"), grid=document.getElementById("grid");
-  const setTip=e=>{const el=e.target.closest(".tile"); if(el) tip.textContent=el.dataset.tip;};
-  grid.addEventListener("mouseover",setTip); grid.addEventListener("focusin",setTip); grid.addEventListener("click",setTip);
-  render();
+
+  function mountMap(root,opt){
+    const $=r=>root.querySelector(`[data-r="${r}"]`);
+    const S={m:"both",k:"raw"};
+    let D={};
+    const val=r=>{const raw=S.m==="ind"?r[0]:S.m==="org"?r[1]:r[0]+r[1];return S.k==="per"?(r[2]?raw/r[2]*1000:0):raw};
+    const fmt=v=>S.k==="per"?v.toFixed(2):fmtN(v);
+
+    function render(){
+      root.querySelectorAll("[data-m]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===S.m));
+      root.querySelectorAll("[data-k]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===S.k));
+      const per=S.k==="per";
+      const rows=Object.keys(D).map(n=>({n,r:D[n],v:val(D[n])}));
+      const act=rows.filter(x=>x.v>0).map(x=>x.v).sort((a,b)=>a-b);
+      const e=edgesFor(act), nb=e.length+1;
+      const bi=v=>{let b=0;while(b<e.length&&v>=e[b])b++;return b};
+      const color=b=>BINS[nb===1?2:Math.round(b*4/(nb-1))];
+
+      const t=rows.reduce((a,x)=>(a.i+=x.r[0],a.o+=x.r[1],a.d+=x.r[3],a),{i:0,o:0,d:0});
+      const counted=opt.live?rows.filter(x=>x.r[0]+x.r[1]>0).length:rows.length;
+      $("stats").innerHTML=[
+        ["Pledges statewide",fmtN(t.i+t.o),""],["Individuals",fmtN(t.i),"var(--ind)"],["Organizations",fmtN(t.o),"var(--org)"],
+        [opt.live?"Counties with pledges":"Counties reporting",counted+'<span style="font-size:18px;font-weight:500;color:var(--muted)"> of 99</span>',""],[opt.newLabel,"+"+fmtN(t.d),""]
+      ].map(s=>`<div class="card stat"><div class="k">${s[2]?`<i class="sw" style="background:${s[2]}"></i>`:""}${s[0]}</div><div class="v">${s[1]}</div></div>`).join("");
+
+      $("grid").innerHTML=G.map(([name,code,r,c,sp])=>{
+        const pos=`grid-column:${c+1};grid-row:${r+1}${sp?" / span "+sp:""};`;
+        const rec=D[name];
+        if(!rec) return `<div class="tile" role="listitem" tabindex="0" data-tip="${name} County: not yet reporting" style="${pos}background:var(--none);color:var(--muted);border:1px dashed var(--none-line)" aria-label="${name} County, not yet reporting"><span class="c">${code}</span><span class="n">–</span></div>`;
+        const v=val(rec); const [bg,ink]=v>0?color(bi(v)):["var(--zero)","var(--muted)"];
+        const unit=per?" per 1,000 residents":(v===1?" pledge":" pledges");
+        const tip=v===0&&opt.live?`${name} County: no pledges yet`:`${name} County: ${fmt(v)}${unit}`;
+        return `<div class="tile" role="listitem" tabindex="0" data-tip="${tip}" style="${pos}background:${bg};color:${ink}" aria-label="${tip}"><span class="c">${code}</span><span class="n">${fmt(v)}</span></div>`;
+      }).join("");
+
+      const f=x=>per?x.toFixed(2):fmtN(x);
+      const lbl=b=>{
+        if(nb===1) return per?"Any":"1+";
+        if(per) return b===0?"<"+f(e[0]):b===nb-1?f(e[b-1])+"+":f(e[b-1])+"–"+f(e[b]);
+        const lo=b===0?1:e[b-1], hi=b===nb-1?null:e[b]-1;
+        return hi===null?fmtN(lo)+"+":lo===hi?fmtN(lo):fmtN(lo)+"–"+fmtN(hi);
+      };
+      $("legend").innerHTML=act.length?Array.from({length:nb},(_,b)=>`<div><span style="background:${color(b)[0]}"></span>${lbl(b)}</div>`).join(""):"";
+      $("legendTitle").textContent=act.length?(per?"Pledges per 1,000 residents":"Pledges counted"):"No pledges counted yet";
+
+      const mw=S.m==="ind"?"Individual pledges":S.m==="org"?"Organization pledges":"All pledges";
+      $("rankNote").textContent=mw+", "+(per?"per 1,000 residents":"by raw count");
+      const top=rows.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,8);
+      if(!top.length){
+        $("rank").innerHTML=`<p class="muted" style="margin:10px 0 0;font-size:14px">No pledges yet.${opt.live&&ready(PLEDGE_FORM_URL)?` <a href="${PLEDGE_FORM_URL}" target="_blank" rel="noopener">Be the first in your county.</a>`:""}</p>`;
+        return;
+      }
+      const max=top[0].v;
+      $("rank").innerHTML=top.map(x=>{
+        const a=S.m==="org"?0:(per?x.r[0]/x.r[2]*1000:x.r[0]); const b=S.m==="ind"?0:(per?x.r[1]/x.r[2]*1000:x.r[1]);
+        const bars=(a?`<div style="flex:0 0 ${a/max*100}%;background:var(--ind);border-radius:2px"></div>`:"")+(b?`<div style="flex:0 0 ${b/max*100}%;background:var(--org);border-radius:2px"></div>`:"");
+        return `<div class="rrow"><div class="t"><span>${x.n}</span><b>${fmt(x.v)}</b></div><div class="bars">${bars}</div></div>`;
+      }).join("");
+    }
+    root.querySelectorAll("[data-m]").forEach(b=>b.addEventListener("click",()=>{S.m=b.dataset.m;render()}));
+    root.querySelectorAll("[data-k]").forEach(b=>b.addEventListener("click",()=>{S.k=b.dataset.k;render()}));
+    const tip=$("tip"), grid=$("grid");
+    const setTip=e=>{const el=e.target.closest(".tile"); if(el) tip.textContent=el.dataset.tip;};
+    grid.addEventListener("mouseover",setTip); grid.addEventListener("focusin",setTip); grid.addEventListener("click",setTip);
+    return {set(d){D=d;render()}};
+  }
+
+  /* minimal CSV reader: quoted fields, doubled quotes, CRLF */
+  function parseCSV(txt){
+    const rows=[]; let row=[], f="", q=false;
+    for(let i=0;i<txt.length;i++){
+      const c=txt[i];
+      if(q){ if(c==='"'){ if(txt[i+1]==='"'){f+='"';i++} else q=false } else f+=c; }
+      else if(c==='"') q=true;
+      else if(c===","){row.push(f);f=""}
+      else if(c==="\n"||c==="\r"){ if(c==="\r"&&txt[i+1]==="\n") i++; row.push(f); rows.push(row); row=[]; f=""; }
+      else f+=c;
+    }
+    if(f!==""||row.length){row.push(f);rows.push(row)}
+    return rows;
+  }
+
+  mountMap(document.querySelector('[data-map="pilot"]'),{live:false,newLabel:"New this cycle"}).set(PILOT);
+
+  const live=mountMap(document.querySelector('[data-map="live"]'),{live:true,newLabel:"New in last 30 days"});
+  const blank=()=>{const d={}; G.forEach(([n])=>d[n]=[0,0,POP[n],0]); return d;};
+  live.set(blank());
+  const status=document.getElementById("liveStatus");
+  if(!ready(PLEDGE_TOTALS_CSV)){
+    status.innerHTML="<span><strong>Pledging opens soon.</strong> This map will fill automatically as pledges come in.</span>";
+  } else {
+    fetch(PLEDGE_TOTALS_CSV,{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); }).then(txt=>{
+      const rows=parseCSV(txt.replace(/^\uFEFF/,""));
+      const h=(rows.shift()||[]).map(x=>x.trim().toLowerCase());
+      const col=k=>h.indexOf(k), ic=col("county"), ii=col("individuals"), io=col("organizations"), inew=col("new_30_days"), il=col("last_pledge");
+      if(ic<0||ii<0||io<0) throw new Error("columns");
+      const n=x=>Math.max(0,parseInt(x,10)||0);
+      const d=blank(); let last="";
+      rows.forEach(r=>{ const c=(r[ic]||"").trim(); if(d[c]) d[c]=[n(r[ii]),n(r[io]),POP[c],inew<0?0:n(r[inew])]; if(il>=0&&(r[il]||"").trim()) last=r[il].trim(); });
+      live.set(d);
+      status.innerHTML=`<span><strong>Live counts</strong> from the MoveYourWayIA pledge form. They update automatically within a few minutes of each pledge.${last?` Last pledge received ${esc(last)}.`:""}</span>`;
+    }).catch(()=>{
+      status.innerHTML="<span><strong>Live counts couldn't load right now.</strong> Please try again later.</span>";
+    });
+  }
 })();
 </script>
 
