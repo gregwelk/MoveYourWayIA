@@ -10,7 +10,7 @@ Prepared for Community Connections for Public Health (CCPH), Iowa State Universi
 | `index.html` | The whole website. All text, styling, the tracker map and its code are in this one file. Badge and logo images are built into it, so it works on its own. |
 | `CNAME` | Tells GitHub Pages to serve the site at `moveyourwayia.org`. Other hosts ignore it. |
 | `_redirects` | Short links for Cloudflare Pages or Netlify, for example `moveyourwayia.org/tracker`. GitHub Pages ignores it. |
-| `assets/badges/` | The four badge concept images (Iowa and ISU, Champion and Ambassador). |
+| `assets/badges/` | The eight badge concept source images (Iowa and ISU; Mover, Champion, Ambassador and Leader). `assets/badges/web/` has the web-optimized WebP versions that are built into `index.html`. |
 | `assets/logos/ccph-logo.png` | The CCPH logo. |
 | `README.md` | These instructions. |
 
