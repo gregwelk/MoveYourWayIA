@@ -12,6 +12,10 @@ Prepared for Community Connections for Public Health (CCPH), Iowa State Universi
 | `_redirects` | Short links for Cloudflare Pages or Netlify, for example `moveyourwayia.org/tracker`. GitHub Pages ignores it. |
 | `assets/badges/` | The eight badge concept source images (Iowa and ISU; Mover, Champion, Ambassador and Leader). `assets/badges/web/` has the web-optimized WebP versions that are built into `index.html`. |
 | `assets/logos/ccph-logo.png` | The CCPH logo. |
+| `pledge-form.pdf` | The printable “This week, I will get active by:” pledge form (letter, landscape). The home page’s **Get Pledge Form** button opens it. |
+| `assets/pledge-form/` | Source files for the pledge form (PowerPoint and PNG) and the small picture used on the home page. |
+| `data/pledge-counts.csv` | County pledge totals that the tracker map reads. Only county counts, never names or emails. |
+| `update-map.html` | A helper page that turns the Microsoft Forms responses into a new `pledge-counts.csv`. |
 | `README.md` | These instructions. |
 
 The `assets` folder holds the original image files for reference. The site does not need it, because the same images are already built into `index.html`.
@@ -106,7 +110,7 @@ DNS changes usually take a few minutes, and can take up to 24–48 hours.
 
 ## Before going public: open items
 
-- [ ] **Map data.** The tracker shows **sample numbers**, and a yellow notice on the page says so. Real counts depend on the GivePulse pledge form and export (see the County Form Build Handbook's questions for GivePulse).
+- [ ] **Map data.** The tracker reads `data/pledge-counts.csv`. To update it: in Microsoft Forms, download the responses to Excel, open `moveyourwayia.org/update-map.html`, choose the file, download `pledge-counts.csv`, and upload it to the `data` folder on GitHub (the page links straight to the upload screen). The spreadsheet never leaves your computer; only county totals are published.
 - [ ] **Badge artwork.** The badge images are AI concept mockups. Replace them with final artwork that uses the authorized Move Your Way logo.
 - [ ] **Enroll buttons.** "Enroll Your Campus" goes to the MoveYourWayISU GivePulse page. "Enroll Your Organization" goes to the Move Your Way Iowa GivePulse page. Swap in dedicated sign-up or resource pages if you create them.
 - [ ] **ISU approvals** from Step 1.
@@ -120,7 +124,7 @@ Open `index.html` in a text editor. VS Code is free and works well. Use Find (Ct
 - **Update tracker numbers:** search for `const D=`. Each county is listed as `"County":[individuals, organizations, population, new this cycle]`. Add or edit counties in that list. A county that isn't listed shows as "not yet reporting."
 - After editing, upload the new `index.html` again (Cloudflare: **Create new deployment**; GitHub: upload the file to the repository).
 
-**Later improvement:** when GivePulse exports are set up, the county numbers can move into a separate `counts.csv` that the map reads, so updating the map just means replacing one file. The tracker can also become its own page at `moveyourwayia.org/tracker`.
+**Later improvement:** once ISU IT confirms an approved way to publish the county totals from Microsoft 365, the map can update automatically instead of by uploading `pledge-counts.csv`. The tracker can also become its own page at `moveyourwayia.org/tracker`.
 
 ## Contacts
 

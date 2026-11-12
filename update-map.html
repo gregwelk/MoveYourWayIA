@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Update the Pledge Map</title>
+<style>
+:root{--bg:#F7F8F2;--surface:#fff;--ink:#12302A;--muted:#4F5F57;--line:#DCE3D6;--brand:#0B5A4C;--gold:#F5CE4A;--warn:#FFF8E6;--warn-line:#E8D9A8;--ok:#EEF7EF;--ok-line:#9CC9A4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1A17;--surface:#14261F;--ink:#EAF3EE;--muted:#A8BBB1;--line:#28403A;--brand:#1E8A74;--warn:#2A2410;--warn-line:#4D4320;--ok:#13291F;--ok-line:#2F5A43}}
+:root[data-theme="dark"]{--bg:#0D1A17;--surface:#14261F;--ink:#EAF3EE;--muted:#A8BBB1;--line:#28403A;--brand:#1E8A74;--warn:#2A2410;--warn-line:#4D4320;--ok:#13291F;--ok-line:#2F5A43}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+h1{margin:0 0 6px;font-size:28px}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:18px}
+.step{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:8px;background:var(--brand);color:#fff;font:inherit;font-weight:700;border:0;cursor:pointer;text-decoration:none}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+input[type=file]{font:inherit;max-width:100%}
+.note{border-radius:8px;padding:10px 14px;margin-top:12px;font-size:15px}
+.note.ok{background:var(--ok);border:1px solid var(--ok-line)}
+.note.warn{background:var(--warn);border:1px solid var(--warn-line)}
+table{border-collapse:collapse;width:100%;font-size:14px;margin-top:10px}
+td,th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+ol{padding-left:22px}li{margin-bottom:6px}
+a{color:var(--brand)}
+</style>
+</head><body><main>
+<h1>Update the pledge map</h1>
+<p class="muted">For the MoveYourWayIA team. This page turns the Microsoft Forms responses into county totals for the website map. <b>Your file never leaves this computer:</b> only the 99 county counts are saved, with no names, emails or pledge text.</p>
+
+<div class="card">
+  <p class="step">Step 1 · Download the responses</p>
+  <ol>
+    <li>Open the pledge form in <a href="https://forms.office.com" target="_blank" rel="noopener">Microsoft Forms</a> and click the <b>Responses</b> tab.</li>
+    <li>Click <b>Open results in Excel</b> (or <b>⋯ → Download a copy</b>). Save the file.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <p class="step">Step 2 · Choose that file</p>
+  <input type="file" id="file" accept=".xlsx,.xls,.csv">
+  <div id="result"></div>
+</div>
+
+<div class="card">
+  <p class="step">Step 3 · Save the county totals</p>
+  <button class="btn" id="save" disabled>Download pledge-counts.csv</button>
+</div>
+
+<div class="card">
+  <p class="step">Step 4 · Put it on the website</p>
+  <ol>
+    <li>Open the <a href="https://github.com/gregwelk/MoveYourWayIA/upload/main/data" target="_blank" rel="noopener">website’s data folder upload page on GitHub</a> (sign in if asked).</li>
+    <li>Drag <b>pledge-counts.csv</b> onto the page. It replaces the old file.</li>
+    <li>Click the green <b>Commit changes</b> button. The map updates in a minute or two.</li>
+  </ol>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+const COUNTIES=["Adair","Adams","Allamakee","Appanoose","Audubon","Benton","Black Hawk","Boone","Bremer","Buchanan","Buena Vista","Butler","Calhoun","Carroll","Cass","Cedar","Cerro Gordo","Cherokee","Chickasaw","Clarke","Clay","Clayton","Clinton","Crawford","Dallas","Davis","Decatur","Delaware","Des Moines","Dickinson","Dubuque","Emmet","Fayette","Floyd","Franklin","Fremont","Greene","Grundy","Guthrie","Hamilton","Hancock","Hardin","Harrison","Henry","Howard","Humboldt","Ida","Iowa","Jackson","Jasper","Jefferson","Johnson","Jones","Keokuk","Kossuth","Lee","Linn","Louisa","Lucas","Lyon","Madison","Mahaska","Marion","Marshall","Mills","Mitchell","Monona","Monroe","Montgomery","Muscatine","O'Brien","Osceola","Page","Palo Alto","Plymouth","Pocahontas","Polk","Pottawattamie","Poweshiek","Ringgold","Sac","Scott","Shelby","Sioux","Story","Tama","Taylor","Union","Van Buren","Wapello","Warren","Washington","Wayne","Webster","Winnebago","Winneshiek","Woodbury","Worth","Wright"];
+const key=s=>String(s||"").toLowerCase().replace(/[’']/g,"'").replace(/\bcounty\b/g,"").replace(/[^a-z']/g,"");
+const LOOKUP=Object.fromEntries(COUNTIES.map(c=>[key(c),c]));
+const $=id=>document.getElementById(id);
+const esc=x=>String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+let csv="";
+
+function toDate(v){
+  if(v instanceof Date&&!isNaN(v)) return v;
+  if(typeof v==="number") return new Date(Math.round((v-25569)*864e5));
+  const d=new Date(v); return isNaN(d)?null:d;
+}
+
+$("file").addEventListener("change",async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  $("save").disabled=true; csv="";
+  try{
+    if(typeof XLSX==="undefined") throw new Error("The spreadsheet reader didn't load. Check your internet connection and reload this page.");
+    const wb=XLSX.read(await f.arrayBuffer(),{cellDates:true});
+    const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:""});
+    const head=(rows.shift()||[]).map(h=>String(h).trim());
+    const ci=head.findIndex(h=>/county/i.test(h));
+    if(ci<0) throw new Error("Couldn't find a column with “County” in its title. Make sure question 3 in the form includes the word County.");
+    const ti=["completion time","start time"].map(n=>head.findIndex(h=>h.toLowerCase()===n)).find(i=>i>=0);
+    const counts=Object.fromEntries(COUNTIES.map(c=>[c,{n:0,recent:0}]));
+    const cutoff=Date.now()-30*864e5; let last=null, total=0; const bad=[];
+    rows.forEach((r,i)=>{
+      if(r.every(v=>v==="")) return;
+      const c=LOOKUP[key(r[ci])];
+      if(!c){ bad.push([i+2,r[ci]]); return; }
+      counts[c].n++; total++;
+      const d=ti===undefined?null:toDate(r[ti]);
+      if(d){ if(d.getTime()>=cutoff) counts[c].recent++; if(!last||d>last) last=d; }
+    });
+    const lastTxt=last?last.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"";
+    const q=s=>/[",]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;
+    csv=["county,individuals,organizations,new_30_days,last_pledge",...COUNTIES.map(c=>[q(c),counts[c].n,0,counts[c].recent,q(lastTxt)].join(","))].join("\n")+"\n";
+    const top=COUNTIES.filter(c=>counts[c].n).sort((a,b)=>counts[b].n-counts[a].n);
+    $("result").innerHTML=
+      `<div class="note ok"><b>${total}</b> pledge${total===1?"":"s"} counted in <b>${top.length}</b> of 99 counties.${lastTxt?` Latest: ${esc(lastTxt)}.`:""}</div>`+
+      (bad.length?`<div class="note warn"><b>${bad.length}</b> row${bad.length===1?"":"s"} skipped because the county wasn't recognized: ${bad.slice(0,8).map(([n,v])=>`row ${n} (“${esc(v)||"blank"}”)`).join(", ")}${bad.length>8?"…":""}</div>`:"")+
+      (top.length?`<table><tr><th>County</th><th class="n">Pledges</th><th class="n">Last 30 days</th></tr>${top.map(c=>`<tr><td>${esc(c)}</td><td class="n">${counts[c].n}</td><td class="n">${counts[c].recent}</td></tr>`).join("")}</table>`:"");
+    $("save").disabled=false;
+  }catch(err){
+    $("result").innerHTML=`<div class="note warn">${esc(err.message||err)}</div>`;
+  }
+});
+
+$("save").addEventListener("click",()=>{
+  if(!csv) return;
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download="pledge-counts.csv"; document.body.appendChild(a); a.click(); a.remove();
+});
+</script>
+</main></body></html>
