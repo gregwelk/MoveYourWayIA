@@ -146,6 +146,19 @@ ol.steps b{display:block;font-size:17px}
 .res .card{padding:20px;display:flex;flex-direction:column;gap:8px}
 .res h3{font-size:19px}
 .res .feature{border:2px solid var(--gold)}
+.sub-h{font-size:clamp(28px,3.8vw,38px);margin:52px 0 18px}
+.join-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}
+.join-main{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.join-card{padding:20px;display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.join-card h3{font-size:19px}
+.join-btn{display:inline-block;border-radius:40px;line-height:0}
+.join-btn img{display:block;width:220px;height:auto;transition:transform .15s}
+.join-btn:hover img{transform:translateY(-1px)}
+.join-btn:focus-visible{outline:3px solid var(--link);outline-offset:4px}
+.gp-graphic{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;margin:0}
+.gp-graphic img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.gp-graphic figcaption{font-size:15px;font-weight:600}
+@media (max-width:760px){.join-grid{grid-template-columns:1fr}.gp-graphic{max-width:320px;justify-self:center}}
 .tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--gold);color:var(--gold-ink);padding:3px 8px;border-radius:4px}
 
 .sis{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:start}
@@ -233,14 +246,29 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
         <li><div><b>Share it with someone</b><span class="muted">Tell a friend, text a coworker or post it. Sharing with one person counts, and posting publicly is up to you.</span></div></li>
         <li><div><b>Submit the pledge form</b><span class="muted">Fill out the short <a href="https://forms.cloud.microsoft/r/CssxVd3um3" target="_blank" rel="noopener">pledge form</a>: finish the sentence, tell us if you shared it, and choose your county. Your county then shows up on the map.</span></div></li>
       </ol>
+      <div class="ctas" style="margin:0 0 24px"><a class="btn solid" href="#tracker">See your county on the tracker map</a></div>
       <p style="margin:-12px 0 28px;font-size:17px">Want to do more? <a href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Join as a Mover on GivePulse</a> and see how to <a href="#badge-up">Badge Up</a>.</p>
+
+      <h2 class="title sub-h" id="join-movement-h">Join the Movement</h2>
+      <div class="join-grid">
+        <div class="join-main">
+          <div class="card join-card"><span class="tag">Individuals</span><h3>Take action</h3><p class="muted" style="margin:0">Join the ‘Movement to Move’ on GivePulse. GivePulse is a robust online platform that enables real connections with real people in your community.</p></div>
+          <a class="join-btn" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">
+            <img src="assets/givepulse/MYWIA-Join-Button.png" alt="Join Move Your Way Iowa on GivePulse" width="220" height="107">
+          </a>
+        </div>
+        <figure class="gp-graphic">
+          <img src="assets/givepulse/why-givepulse.webp" width="300" height="533" loading="lazy" alt="Why GivePulse? Your pledge is the first step; GivePulse is where you connect with your community. Five ways to connect in your county: Resources, Events, Wall, Subgroups and People. Free to join.">
+          <figcaption><a href="assets/givepulse/Why-GivePulse-MYWIA-Handout.pdf" download target="_blank" rel="noopener">Download the 1-page flyer (PDF)</a></figcaption>
+        </figure>
+      </div>
+
+      <h2 class="title sub-h" id="extend-movement-h">Extend the Movement</h2>
       <div class="res">
-        <div class="card"><span class="tag">Individuals</span><h3>Make Your Pledge</h3><p class="muted" style="margin:0">Take action and join the Movement to Move. The act is simple but significant!</p><p class="muted" style="margin:0">Make your pledge right here. It takes about a minute. Then join as a Mover on the MoveYourWayIA GivePulse page or your county's page (select 'Subgroups' to find your county).</p><a class="btn solid" style="align-self:flex-start;margin-top:4px" href="https://forms.cloud.microsoft/r/CssxVd3um3" target="_blank" rel="noopener">Make Your Pledge</a><a href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Join on GivePulse</a></div>
         <div class="card"><span class="tag">Organizations</span><h3>Bring your people</h3><p class="muted" style="margin:0">Sign on as an Affiliate to help share out the MoveYourWay messaging. This is ideal for worksites, schools, churches and other organizations. Our CCPH team will give you everything you need to get started. Make the Move!</p><a href="https://app.smartsheet.com/b/form/01a18d860faa76158645570ff987719d" target="_blank" rel="noopener">Get your group involved</a></div>
         <div class="card"><span class="tag">Campuses</span><h3>Enroll Your Campus</h3><p class="muted" style="margin:0">The MoveYourWayIA campaign can be extended to support active living and related outreach on college campuses. Specific strategies and toolkits are available for campus groups or leaders interested in bringing the MoveYourWayIA to their campus. Affiliated campuses will have their own GivePulse pages but with programming managed locally. It is an easy to use online tool and the <a href="https://iastate.givepulse.com/group/2200261-moveyourwayisu" target="_blank" rel="noopener">MoveYourWayISU</a> team can answer questions that might come up.</p><a href="https://app.smartsheet.com/b/form/44adc4f62cf24751a2937b98611e2cce" target="_blank" rel="noopener">Enroll Your Campus</a></div>
         <div class="card"><span class="tag">Counties</span><h3>Empower Your County</h3><p class="muted" style="margin:0">Sign up your county to be formally connected as a county partner in the MoveYourWayIA campaign. This form is for county-level leaders (County Health, County Extension or County Coalitions) positioned to guide and support county level programming through GivePulse. Our CCPH team will continue to manage the page until you are ready to take the keys! Make the Move!</p><a href="https://app.smartsheet.com/b/form/01a0eed8d3be77ff8e42032eaccc5b00" target="_blank" rel="noopener">Learn about County Level Support</a></div>
       </div>
-      <div class="ctas" style="margin-top:24px"><a class="btn solid" href="#tracker">See your county on the tracker map</a></div>
       <a class="card about-teaser" href="#about"><span><b>About MoveYourWayIA</b><span class="muted">Who leads the campaign, how counties join, and how students help.</span></span><span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
