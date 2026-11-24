@@ -147,7 +147,7 @@ ol.steps b{display:block;font-size:17px}
 .res h3{font-size:19px}
 .res .feature{border:2px solid var(--gold)}
 .sub-h{font-size:clamp(28px,3.8vw,38px);margin:52px 0 18px}
-.join-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}
+.join-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:stretch}
 .join-main{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
 .join-card{padding:20px;display:flex;flex-direction:column;gap:8px;align-self:stretch}
 .join-card h3{font-size:19px}
@@ -155,10 +155,20 @@ ol.steps b{display:block;font-size:17px}
 .join-btn img{display:block;width:220px;height:auto;transition:transform .15s}
 .join-btn:hover img{transform:translateY(-1px)}
 .join-btn:focus-visible{outline:3px solid var(--link);outline-offset:4px}
-.gp-graphic{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;margin:0}
-.gp-graphic img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.12)}
-.gp-graphic figcaption{font-size:15px;font-weight:600}
-@media (max-width:760px){.join-grid{grid-template-columns:1fr}.gp-graphic{max-width:320px;justify-self:center}}
+.gp-intro{background:#0B5A4C;color:#FFFFFF;border-radius:14px;padding:24px 26px;display:flex;flex-direction:column;gap:12px}
+.gp-intro h3{font-size:30px;line-height:1.1;color:#FFFFFF}
+.gp-intro h3 span{color:#C2D643}
+.gp-intro p{margin:0;font-size:17px;line-height:1.55}
+.gp-intro .gp-kicker{color:#F5CE4A;font-weight:700}
+.gp-intro .btn{align-self:flex-start;margin-top:4px;background:#FFFFFF;color:#0B5A4C}
+.gp-ways-h{font-size:24px;margin:36px 0 14px}
+.gp-ways-h span{color:var(--leaf)}
+.gp-ways{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.gp-way{padding:20px;display:flex;flex-direction:column;gap:6px}
+.gp-way .ico{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:6px;box-shadow:0 0 0 4px var(--surface),0 0 0 5px var(--line)}
+.gp-way h4{margin:0;font-size:20px;line-height:1.2}
+.gp-way .sub{font-size:15px;font-weight:700;line-height:1.35}
+.gp-way p{margin:0;font-size:15px;line-height:1.55;color:var(--muted)}
 .tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--gold);color:var(--gold-ink);padding:3px 8px;border-radius:4px}
 
 .sis{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:start}
@@ -257,11 +267,22 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
             <img src="assets/givepulse/MYWIA-Join-Button.png" alt="Join Move Your Way Iowa on GivePulse" width="220" height="107">
           </a>
         </div>
-        <figure class="gp-graphic">
-          <img src="assets/givepulse/why-givepulse.webp" width="300" height="533" loading="lazy" alt="Why GivePulse? Your pledge is the first step; GivePulse is where you connect with your community. Five ways to connect in your county: Resources, Events, Wall, Subgroups and People. Free to join.">
-          <figcaption><a href="assets/givepulse/Why-GivePulse-MYWIA-Handout.pdf" download target="_blank" rel="noopener">Download the 1-page flyer (PDF)</a></figcaption>
-        </figure>
+        <aside class="gp-intro" aria-labelledby="why-gp-h">
+          <h3 id="why-gp-h">Why <span>GivePulse?</span></h3>
+          <p>Your pledge is the first step. GivePulse is where you connect with your community, take part and see the difference you make.</p>
+          <p class="gp-kicker">It's a real social network for real-world movement.</p>
+          <a class="btn" href="assets/givepulse/Why-GivePulse-MYWIA-Handout.pdf" download target="_blank" rel="noopener">Download the 1-page flyer (PDF)</a>
+        </aside>
       </div>
+
+      <h3 class="gp-ways-h">5 ways GivePulse connects you <span>in your county</span></h3>
+      <ul class="gp-ways">
+        <li class="card gp-way"><span class="ico" style="background:#F5CE4A;color:#12302A"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21.5h4"/><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.5.4.8 1 .8 1.6V16h6v-.1c0-.6.3-1.2.8-1.6A6.5 6.5 0 0 0 12 2.5z"/></svg></span><h4>Resources</h4><span class="sub" style="color:color-mix(in srgb,#7A5D00 80%,var(--ink))">Get tips, support & ideas</span><p>Ready-to-use guides, pledge materials and promotion ideas so you never start from scratch.</p></li>
+        <li class="card gp-way"><span class="ico" style="background:#F38629;color:#FFFFFF"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M8 2.5v4"/><path d="M16 2.5v4"/><path d="M3 10h18"/><path d="m9 15.5 2 2 4-4"/></svg></span><h4>Events</h4><span class="sub" style="color:color-mix(in srgb,#A84E0C 80%,var(--ink))">Join activities & trainings</span><p>Find walks, workshops and trainings near you, or post your own, with sign-ups and reminders built in.</p></li>
+        <li class="card gp-way"><span class="ico" style="background:#E94A5C;color:#FFFFFF"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5a2 2 0 0 1-2 2H8l-4.5 4v-15a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><path d="M8 8.5h9"/><path d="M8 12h6"/></svg></span><h4>Wall</h4><span class="sub" style="color:color-mix(in srgb,#B32A3D 80%,var(--ink))">Share ideas & efforts</span><p>Post photos, wins and ideas. See what other Iowans are trying and cheer each other on.</p></li>
+        <li class="card gp-way"><span class="ico" style="background:#1EB2A6;color:#FFFFFF"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s6.5-5.6 6.5-11a6.5 6.5 0 0 0-13 0c0 5.4 6.5 11 6.5 11z"/><circle cx="12" cy="10.5" r="2.4"/></svg></span><h4>Subgroups</h4><span class="sub" style="color:color-mix(in srgb,#0C7268 80%,var(--ink))">Find county pages & partners</span><p>Connect with your county's page and local partners: schools, Extension, parks, faith groups and businesses.</p></li>
+        <li class="card gp-way"><span class="ico" style="background:#C2D643;color:#12302A"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20.5v-.8A5.7 5.7 0 0 1 8.2 14h1.6a5.7 5.7 0 0 1 5.7 5.7v.8"/><path d="M15.5 4.6a3.6 3.6 0 0 1 0 6.8"/><path d="M21.5 20.5v-.8a5.7 5.7 0 0 0-3.6-5.3"/></svg></span><h4>People</h4><span class="sub" style="color:color-mix(in srgb,#556A0C 80%,var(--ink))">Find friends & send messages</span><p>See who's moving in your community, invite friends and message fellow Movers, Champions and Ambassadors.</p></li>
+      </ul>
 
       <h2 class="title sub-h" id="extend-movement-h">Extend the Movement</h2>
       <div class="res">
