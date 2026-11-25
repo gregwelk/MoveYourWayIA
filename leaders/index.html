@@ -47,8 +47,7 @@
   .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 34px}
   .level{border-radius:14px;padding:14px 14px 12px;background:#f6f8f7;border:2px solid transparent;text-decoration:none;color:inherit;transition:transform .15s}
   .level:hover{transform:translateY(-2px)}
-  .level .n{font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-  .level .t{display:block;font-weight:700;font-size:1.05rem;color:var(--green)}
+    .level .t{display:block;font-weight:700;font-size:1.05rem;color:var(--green)}
   .level .b{display:block;font-size:.8rem;color:var(--muted)}
   .level.current{background:var(--pale);border-color:var(--green)}
   .level.soon{opacity:.75;pointer-events:none}
@@ -128,17 +127,17 @@
 <main class="wrap">
 
   <div class="hero">
-    <p class="eyebrow">Badge Up · Level 4 · Sector Info</p>
+    <p class="eyebrow">Leader · Sector Info</p>
     <h1>Leaders: bring the movement to your whole county</h1>
     <p>Leaders represent their county in the Iowa Physical Activity Plan. They connect with other Leaders across the state, learn what works in each sector, and bring proven strategies home.</p>
   </div>
 
   <!-- The four levels. Each links to its own page; pages that aren't built yet are marked "soon". -->
-  <nav class="levels" aria-label="Badge Up levels">
-    <a class="level soon" href="/movers/"><span class="n">Level 1</span><span class="t">Mover</span><span class="b">Get the Facts</span></a>
-    <a class="level soon" href="/champions/"><span class="n">Level 2</span><span class="t">Champion</span><span class="b">Outreach Tips</span></a>
-    <a class="level soon" href="/ambassadors/"><span class="n">Level 3</span><span class="t">Ambassador</span><span class="b">Impact Options</span></a>
-    <a class="level current" href="/leaders/" aria-current="page"><span class="n">Level 4</span><span class="t">Leader</span><span class="b">Sector Info</span></a>
+  <nav class="levels" aria-label="Move Your Way Iowa roles">
+    <a class="level" href="/movers/"><span class="t">Mover</span><span class="b">Fact Sheets</span></a>
+    <a class="level" href="/champions/"><span class="t">Champion</span><span class="b">Outreach Tips</span></a>
+    <a class="level" href="/ambassadors/"><span class="t">Ambassador</span><span class="b">Impact Options</span></a>
+    <a class="level current" href="/leaders/" aria-current="page"><span class="t">Leader</span><span class="b">Sector Info</span></a>
   </nav>
 
   <section>

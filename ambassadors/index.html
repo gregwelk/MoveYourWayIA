@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambassadors · Impact Options · MoveYourWay Iowa</title>
+<meta name="description" content="Move Your Way Iowa Ambassadors partner with schools, worksites, congregations, libraries and senior centers, and help lead their county on GivePulse.">
+<!-- Hidden page: reachable by link from #badge-up, not listed in menus or search. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== EDIT HERE: the five campaign colors (match the "Join the Movement" boxes on the home page) ===== */
+  :root{
+    --c1:#F5CE4A;   /* yellow */
+    --c2:#F38629;   /* orange */
+    --c3:#E94A5C;   /* coral / pink */
+    --c4:#1EB2A6;   /* teal */
+    --c5:#C2D643;   /* lime */
+    --green:#0B5A4C;      /* deep forest green (logo script) */
+    --green-2:#0B6E5C;
+    --pale:#EEF6E6;
+    --ink:#1f2a27;
+    --muted:#5b6b66;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+  a{color:var(--green-2)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  header.top{padding:22px 0 8px}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  header.top img{height:120px;width:auto}
+  .back{font-size:.92rem;text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+
+  /* hero */
+  .hero{background:var(--green);color:#fff;border-radius:var(--radius);padding:34px 30px;margin:14px 0 26px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:700;color:var(--c5);margin:0 0 6px}
+  .hero h1{margin:0 0 10px;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15}
+  .hero p{margin:0;max-width:720px;font-size:1.05rem;opacity:.95}
+
+  /* 4 levels stepper */
+  .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 34px}
+  .level{border-radius:14px;padding:14px 14px 12px;background:#f6f8f7;border:2px solid transparent;text-decoration:none;color:inherit;transition:transform .15s}
+  .level:hover{transform:translateY(-2px)}
+    .level .t{display:block;font-weight:700;font-size:1.05rem;color:var(--green)}
+  .level .b{display:block;font-size:.8rem;color:var(--muted)}
+  .level.current{background:var(--pale);border-color:var(--green)}
+  .level.soon{opacity:.75;pointer-events:none}
+  @media (max-width:700px){.levels{grid-template-columns:repeat(2,1fr)}}
+
+  h2{color:var(--green);font-size:1.5rem;margin:0 0 10px}
+  h2 .num{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--c1);color:var(--green);font-size:1rem;margin-right:8px;vertical-align:middle}
+  section{margin:0 0 40px}
+  .lead{font-size:1.05rem;max-width:820px}
+
+  /* role cards */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+  .role{background:var(--pale);border-radius:14px;padding:16px;border-top:5px solid var(--c4)}
+  .role:nth-child(2){border-top-color:var(--c2)}
+  .role:nth-child(3){border-top-color:var(--c3)}
+  .role h3{margin:0 0 6px;font-size:1.02rem;color:var(--green)}
+  .role p{margin:0;font-size:.93rem}
+  @media (max-width:760px){.roles{grid-template-columns:1fr}}
+
+  /* sector circles */
+  .hint{color:var(--muted);font-size:.92rem;margin:4px 0 16px}
+  .sectors{display:grid;grid-template-columns:repeat(5,1fr);gap:18px 12px}
+  .features{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0 0}
+  .feature{background:rgba(255,255,255,.1);border-radius:12px;padding:14px;border-top:4px solid var(--col)}
+  .feature h4{margin:0 0 4px;font-size:1rem;color:#fff}
+  .feature p{margin:0;font-size:.85rem;opacity:.92}
+  @media (max-width:900px){.features{grid-template-columns:repeat(2,1fr)}}
+  .cta{background:var(--c1);border-radius:var(--radius);padding:24px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .cta h3{margin:0 0 4px;color:var(--green)}
+  .cta p{margin:0;font-size:.93rem}
+  @media (max-width:820px){.sectors{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:520px){.sectors{grid-template-columns:repeat(2,1fr)}}
+  .sector{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px;border-radius:14px;font:inherit;color:inherit}
+  .sector:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+  .circle{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:var(--col);box-shadow:0 0 0 5px #fff,0 0 0 7px var(--col);transition:transform .15s}
+  .circle svg{width:46px;height:46px;stroke:#1f2a27;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .sector:hover .circle,.sector[aria-expanded="true"] .circle{transform:scale(1.07)}
+  .sector .label{font-size:.86rem;font-weight:600;text-align:center;line-height:1.25;color:var(--green)}
+  .sector .label small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
+
+  /* detail panel */
+  .detail{margin-top:22px;border-radius:var(--radius);border:2px solid var(--col,var(--green));background:#fff;padding:22px 24px;display:none}
+  .detail.open{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .detail .top{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .detail .dot{width:46px;height:46px;border-radius:50%;background:var(--col);display:grid;place-items:center;flex:none}
+  .detail .dot svg{width:24px;height:24px;stroke:#1f2a27;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .detail h3{margin:0;color:var(--green);font-size:1.25rem}
+  .detail .meta{font-size:.82rem;color:var(--muted)}
+  .detail p{margin:6px 0 14px}
+  .btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.95rem}
+  .btn.primary{background:var(--green);color:#fff}
+  .btn.primary:hover{background:var(--green-2)}
+  .btn.ghost{border:2px solid var(--green);color:var(--green);margin-left:8px}
+  .close{float:right;background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--muted)}
+
+  /* GivePulse */
+  .pulse{background:linear-gradient(135deg,var(--green),#0e6b59);color:#fff;border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:center}
+  .pulse h2{color:#fff}
+  .pulse h2 .num{background:var(--c5)}
+  .pulse ul{margin:10px 0 0;padding-left:20px}
+  .pulse li{margin:4px 0}
+  .pulse .join{text-align:center}
+  .pulse .join img{max-width:260px;width:100%;height:auto}
+  .pulse .join a.text{display:block;color:#fff;margin-top:8px;font-size:.9rem}
+  @media (max-width:760px){.pulse{grid-template-columns:1fr}}
+
+  /* download */
+  .download{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--pale);border-radius:var(--radius);padding:22px 26px}
+  .download h3{margin:0 0 4px;color:var(--green)}
+  .download p{margin:0;font-size:.93rem;color:var(--muted)}
+
+  footer{border-top:1px solid #e3e9e6;margin-top:30px;padding:20px 0 34px;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/"><img src="assets/moveyourwayia-logo.jpg" width="120" height="120" alt="Move Your Way Iowa: The Movement to Move Iowa"></a>
+    <a class="back" href="/#badge-up">← Back to Badge Up</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">Ambassador · Impact Options</p>
+    <h1>Help organizations make movement routine</h1>
+    <p>Ambassadors partner with the places where Iowans learn, work, worship and gather, and they help their county run its own programming on GivePulse. You won’t do it alone: our team provides training, templates and support.</p>
+    <p style="margin-top:16px"><a class="btn" style="background:var(--c1);color:var(--green)" href="mailto:moveyourway@iastate.edu?subject=Request%20Ambassador%20Training&body=Hi%20Move%20Your%20Way%20Iowa%20team%2C%0A%0AI%27d%20like%20to%20request%20Ambassador%20Training.%0A%0AName%3A%0ACounty%3A%0ASetting(s)%20I%27m%20interested%20in%3A%0ABest%20days%2Ftimes%20for%20a%20call%3A%0A%0AThank%20you!" data-train>Request Ambassador Training</a></p>
+  </div>
+
+  <!-- The four levels. Each links to its own page; pages that aren't built yet are marked "soon". -->
+  <nav class="levels" aria-label="Move Your Way Iowa roles">
+    <a class="level" href="/movers/"><span class="t">Mover</span><span class="b">Fact Sheets</span></a>
+    <a class="level" href="/champions/"><span class="t">Champion</span><span class="b">Outreach Tips</span></a>
+    <a class="level current" href="/ambassadors/" aria-current="page"><span class="t">Ambassador</span><span class="b">Impact Options</span></a>
+    <a class="level" href="/leaders/"><span class="t">Leader</span><span class="b">Sector Info</span></a>
+  </nav>
+
+  <section>
+    <h2><span class="num">1</span>Two paths to becoming an Ambassador</h2>
+    <p class="lead">Ambassadors build on their Champion experience by reaching organizations and the wider community. Choose the path that fits you, or do both.</p>
+    <div class="roles">
+      <div class="role"><h3>Organizational liaison</h3><p>Partner with a school, worksite, congregation, library or senior center you know well, and help it become a Move Your Way partner.</p></div>
+      <div class="role"><h3>GivePulse coordinator</h3><p>Become an editor or administrator for your county’s GivePulse page and help coordinate local resources, events and partners.</p></div>
+      <div class="role"><h3>Supported every step</h3><p>Ambassador Training covers both paths, including how to manage and use GivePulse. Our CCPH team is here to help.</p></div>
+    </div>
+    <p class="hint" style="margin-top:14px">Not a Champion yet? <a href="/champions/">Start with the Champion page</a> and earn your Champion badge first.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>Five priority settings</h2>
+    <p class="lead">Ambassadors partner with schools, worksites, congregations, libraries and senior centers to make movement visible and routine, using a customized Organizational Outreach Guide for each setting. The guides are shared after Ambassador Training.</p>
+    <p class="hint">Tap a circle to see why the setting matters and a few first ideas.</p>
+    <div class="sectors" id="sectors" role="list"></div>
+    <div class="detail" id="detail" aria-live="polite"></div>
+  </section>
+
+  <section>
+    <div class="pulse" style="grid-template-columns:1fr">
+      <div>
+        <h2><span class="num">3</span>Take the keys: lead GivePulse in your county</h2>
+        <p>GivePulse is the <strong>Pulse of the Movement</strong>: it’s where the action happens. Our team can support you, but an important part of the Ambassador role is taking the keys and running local programming more directly. Ambassador Training shows you how to manage and use these five features:</p>
+        <div class="features">
+          <div class="feature" style="--col:var(--c1)"><h4>Resources</h4><p>Post guides, pledge materials and promotion ideas for your county.</p></div>
+          <div class="feature" style="--col:var(--c2)"><h4>Events</h4><p>Post walks, workshops and trainings, with sign-ups and reminders.</p></div>
+          <div class="feature" style="--col:var(--c3)"><h4>Wall</h4><p>Share wins, photos and ideas, and cheer on local efforts.</p></div>
+          <div class="feature" style="--col:var(--c4)"><h4>Subgroups</h4><p>Connect your county page with schools, worksites and other partners.</p></div>
+          <div class="feature" style="--col:var(--c5)"><h4>People</h4><p>Invite and message Movers, Champions and fellow Ambassadors.</p></div>
+        </div>
+        <p style="margin:16px 0 0"><strong>Built to grow over time.</strong> This year, we’re building county pages with Ambassadors helping to coordinate them. Over time, partners like a school district, worksite or senior center can have their own GivePulse page that affiliates with the county page.</p>
+        <p style="margin:16px 0 0"><a class="btn" style="background:#fff;color:var(--green)" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Visit Move Your Way Iowa on GivePulse</a> <span style="margin-left:8px">Haven’t joined yet? Select <strong>Join</strong> on the page.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <div>
+        <h3>Ready to take the next step?</h3>
+        <p>Request Ambassador Training and our team will follow up to schedule a session.</p>
+      </div>
+      <a class="btn primary" href="mailto:moveyourway@iastate.edu?subject=Request%20Ambassador%20Training&body=Hi%20Move%20Your%20Way%20Iowa%20team%2C%0A%0AI%27d%20like%20to%20request%20Ambassador%20Training.%0A%0AName%3A%0ACounty%3A%0ASetting(s)%20I%27m%20interested%20in%3A%0ABest%20days%2Ftimes%20for%20a%20call%3A%0A%0AThank%20you!" data-train>Request Ambassador Training</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="download">
+      <div>
+        <h3>Download the Ambassador Outreach overview</h3>
+        <p>A two-page PDF with both Ambassador paths, the five settings and how to lead GivePulse locally.</p>
+      </div>
+      <a class="btn primary" href="files/ambassador-outreach-overview.pdf" download>Download PDF</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>MoveYourWayIA is the awareness campaign of the Iowa Physical Activity Plan, coordinated through the Active Living Workgroup of Healthy Iowans. Move Your Way® and the Move Your Way logo are registered service marks of the U.S. Department of Health and Human Services. Used with permission.</p>
+    <p>Questions: <a href="mailto:moveyourway@iastate.edu">moveyourway@iastate.edu</a></p>
+  </div>
+</footer>
+
+<script>
+/* ===== EDIT HERE: where every "Request Ambassador Training" button goes.
+   Today it opens a pre-filled email. Replace with a booking-page URL to switch all buttons at once. ===== */
+const TRAINING_LINK = "mailto:moveyourway@iastate.edu?subject=Request%20Ambassador%20Training&body=Hi%20Move%20Your%20Way%20Iowa%20team%2C%0A%0AI%27d%20like%20to%20request%20Ambassador%20Training.%0A%0AName%3A%0ACounty%3A%0ASetting(s)%20I%27m%20interested%20in%3A%0ABest%20days%2Ftimes%20for%20a%20call%3A%0A%0AThank%20you!";
+document.querySelectorAll('[data-train]').forEach(a=>a.href=TRAINING_LINK);
+
+/* ===== EDIT HERE: the 5 settings. ===== */
+const SECTORS = [
+  {"name": "Schools", "who": "Principal, PE teacher, school nurse, wellness committee, PTO", "intro": "Schools reach nearly every young Iowan, every day, along with their families and staff. When movement is built into the school day, children learn active habits that last a lifetime, and the whole school community feels the benefit.", "ideas": ["Movement breaks", "Pledge board", "Family walk night", "Stair and hallway signs"], "icon": "school"},
+  {"name": "Worksites", "who": "HR or wellness lead, supervisors, chamber of commerce, employee groups", "intro": "Iowans spend much of their week at work. When employers make it easy to move during the day, they build a healthier, more engaged workforce and a stronger community at the same time.", "ideas": ["Walking meetings and groups", "Two-minute anchors", "Break room pledge board", "Team challenge"], "icon": "briefcase"},
+  {"name": "Congregations", "who": "Pastor or faith leader, health ministry, youth and adult group leaders", "intro": "Faith communities bring people of all ages together around shared values and care for one another. That trust makes congregations a natural place to support healthy, active living for the whole family.", "ideas": ["Walk after worship", "Health ministry focus", "Family activity day", "Bulletin and newsletter"], "icon": "heart"},
+  {"name": "Libraries", "who": "Library director, youth and adult services staff, Friends of the Library", "intro": "Public libraries are trusted, welcoming community hubs open to everyone. They already host programs for every age, which makes them a natural home for visible, low-cost ways to move.", "ideas": ["Pledge board display", "Story walk or move-along story time", "Walking club", "Resource table"], "icon": "book"},
+  {"name": "Senior Centers", "who": "Center director, activity coordinator, Area Agency on Aging, meal site staff", "intro": "Senior centers support older Iowans with meals, activities and connection. Staying active helps older adults keep their independence, prevent falls and enjoy everyday life, and the center is a place where they already gather.", "ideas": ["Balance and strength breaks", "Walk With Ease group", "Walking buddies", "Activity calendar"], "icon": "sun"}
+];
+const COLORS = ["--c1","--c2","--c3","--c4","--c5"]; // each color used twice: 1-5, then 6-10
+
+const ICONS = {
+  school:'<path d="M3 10 12 5l9 5-9 5z"/><path d="M7 12v4c0 1.5 2.5 3 5 3s5-1.5 5-3v-4"/>',
+  briefcase:'<rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  book:'<path d="M4 5a2 2 0 0 1 2-1h5v16H6a2 2 0 0 0-2 1zM20 5a2 2 0 0 0-2-1h-5v16h5a2 2 0 0 1 2 1z"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>'
+};
+const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]}</svg>`;
+
+const grid = document.getElementById('sectors');
+const detail = document.getElementById('detail');
+
+SECTORS.forEach((s,i)=>{
+  const col = `var(${COLORS[i%5]})`;
+  const b = document.createElement('button');
+  b.className='sector'; b.setAttribute('role','listitem'); b.setAttribute('aria-expanded','false');
+  b.style.setProperty('--col',col);
+  b.innerHTML = `<span class="circle">${svg(s.icon)}</span><span class="label"><small>Setting ${i+1}</small>${s.name}</span>`;
+  b.addEventListener('click',()=>open(i));
+  grid.appendChild(b);
+});
+
+function open(i){
+  const s = SECTORS[i], col = `var(${COLORS[i%5]})`;
+  [...grid.children].forEach((el,j)=>el.setAttribute('aria-expanded', j===i ? 'true':'false'));
+  detail.style.setProperty('--col',col);
+  detail.innerHTML = `
+    <button class="close" aria-label="Close" onclick="closeDetail()">×</button>
+    <div class="top"><span class="dot">${svg(s.icon)}</span>
+      <div><div class="meta">Setting ${i+1} of 5 · Key contacts: ${s.who}</div><h3>${s.name}</h3></div></div>
+    <p>${s.intro}</p><p class="meta" style="margin-top:-6px"><strong>First ideas:</strong> ${s.ideas.join(" · ")}</p>
+    <a class="btn primary" href="${TRAINING_LINK}" data-train>Request Ambassador Training</a>
+    <a class="btn ghost" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Join on GivePulse</a>`;
+  detail.classList.add('open');
+  history.replaceState(null,'',`#setting-${i+1}`);
+  detail.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function closeDetail(){
+  detail.classList.remove('open');
+  [...grid.children].forEach(el=>el.setAttribute('aria-expanded','false'));
+  history.replaceState(null,'',location.pathname);
+}
+// Deep links: /leaders/#sector-3 opens Education directly
+const m = location.hash.match(/^#setting-(\d+)$/);
+if (m && +m[1]>=1 && +m[1]<=SECTORS.length) open(+m[1]-1);
+</script>
+</body>
+</html>

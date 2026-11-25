@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Movers · Fact Sheets · MoveYourWay Iowa</title>
+<meta name="description" content="Move Your Way fact sheets for kids, teens, adults, older adults, parents and more. Find the one that fits you and join the movement in Iowa.">
+<!-- Hidden page: reachable by link from #badge-up, not listed in menus or search. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== EDIT HERE: the five campaign colors (match the "Join the Movement" boxes on the home page) ===== */
+  :root{
+    --c1:#F5CE4A;   /* yellow */
+    --c2:#F38629;   /* orange */
+    --c3:#E94A5C;   /* coral / pink */
+    --c4:#1EB2A6;   /* teal */
+    --c5:#C2D643;   /* lime */
+    --green:#0B5A4C;      /* deep forest green (logo script) */
+    --green-2:#0B6E5C;
+    --pale:#EEF6E6;
+    --ink:#1f2a27;
+    --muted:#5b6b66;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+  a{color:var(--green-2)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  header.top{padding:22px 0 8px}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  header.top img{height:120px;width:auto}
+  .back{font-size:.92rem;text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+
+  /* hero */
+  .hero{background:var(--green);color:#fff;border-radius:var(--radius);padding:34px 30px;margin:14px 0 26px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:700;color:var(--c5);margin:0 0 6px}
+  .hero h1{margin:0 0 10px;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15}
+  .hero p{margin:0;max-width:720px;font-size:1.05rem;opacity:.95}
+
+  /* 4 levels stepper */
+  .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 34px}
+  .level{border-radius:14px;padding:14px 14px 12px;background:#f6f8f7;border:2px solid transparent;text-decoration:none;color:inherit;transition:transform .15s}
+  .level:hover{transform:translateY(-2px)}
+    .level .t{display:block;font-weight:700;font-size:1.05rem;color:var(--green)}
+  .level .b{display:block;font-size:.8rem;color:var(--muted)}
+  .level.current{background:var(--pale);border-color:var(--green)}
+  .level.soon{opacity:.75;pointer-events:none}
+  @media (max-width:700px){.levels{grid-template-columns:repeat(2,1fr)}}
+
+  h2{color:var(--green);font-size:1.5rem;margin:0 0 10px}
+  h2 .num{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--c1);color:var(--green);font-size:1rem;margin-right:8px;vertical-align:middle}
+  section{margin:0 0 40px}
+  .lead{font-size:1.05rem;max-width:820px}
+
+  /* role cards */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+  .role{background:var(--pale);border-radius:14px;padding:16px;border-top:5px solid var(--c4)}
+  .role:nth-child(2){border-top-color:var(--c2)}
+  .role:nth-child(3){border-top-color:var(--c3)}
+  .role h3{margin:0 0 6px;font-size:1.02rem;color:var(--green)}
+  .role p{margin:0;font-size:.93rem}
+  @media (max-width:760px){.roles{grid-template-columns:1fr}}
+
+  /* sector circles */
+  .hint{color:var(--muted);font-size:.92rem;margin:4px 0 16px}
+  .sectors{display:grid;grid-template-columns:repeat(5,1fr);gap:18px 12px}
+  @media (max-width:820px){.sectors{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:520px){.sectors{grid-template-columns:repeat(2,1fr)}}
+  .sector{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px;border-radius:14px;font:inherit;color:inherit}
+  .sector:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+  .circle{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:var(--col);box-shadow:0 0 0 5px #fff,0 0 0 7px var(--col);transition:transform .15s}
+  .circle svg{width:46px;height:46px;stroke:#1f2a27;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .sector:hover .circle,.sector[aria-expanded="true"] .circle{transform:scale(1.07)}
+  .sector .label{font-size:.86rem;font-weight:600;text-align:center;line-height:1.25;color:var(--green)}
+  .sector .label small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
+
+  /* detail panel */
+  .detail{margin-top:22px;border-radius:var(--radius);border:2px solid var(--col,var(--green));background:#fff;padding:22px 24px;display:none}
+  .detail.open{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .detail .top{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .detail .dot{width:46px;height:46px;border-radius:50%;background:var(--col);display:grid;place-items:center;flex:none}
+  .detail .dot svg{width:24px;height:24px;stroke:#1f2a27;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .detail h3{margin:0;color:var(--green);font-size:1.25rem}
+  .detail .meta{font-size:.82rem;color:var(--muted)}
+  .detail p{margin:6px 0 14px}
+  .btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.95rem}
+  .btn.primary{background:var(--green);color:#fff}
+  .btn.primary:hover{background:var(--green-2)}
+  .btn.ghost{border:2px solid var(--green);color:var(--green);margin-left:8px}
+  .close{float:right;background:none;border:0;font-size:1.4rem;cursor:pointer;color:var(--muted)}
+
+  /* GivePulse */
+  .pulse{background:linear-gradient(135deg,var(--green),#0e6b59);color:#fff;border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:center}
+  .pulse h2{color:#fff}
+  .pulse h2 .num{background:var(--c5)}
+  .pulse ul{margin:10px 0 0;padding-left:20px}
+  .pulse li{margin:4px 0}
+  .pulse .join{text-align:center}
+  .pulse .join img{max-width:260px;width:100%;height:auto}
+  .pulse .join a.text{display:block;color:#fff;margin-top:8px;font-size:.9rem}
+  @media (max-width:760px){.pulse{grid-template-columns:1fr}}
+
+  /* download */
+  .download{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--pale);border-radius:var(--radius);padding:22px 26px}
+  .download h3{margin:0 0 4px;color:var(--green)}
+  .download p{margin:0;font-size:.93rem;color:var(--muted)}
+
+  footer{border-top:1px solid #e3e9e6;margin-top:30px;padding:20px 0 34px;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="/"><img src="assets/moveyourwayia-logo.jpg" width="120" height="120" alt="Move Your Way Iowa: The Movement to Move Iowa"></a>
+    <a class="back" href="/#badge-up">← Back to Badge Up</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">Mover · Fact Sheets</p>
+    <h1>Your body is meant to move</h1>
+    <p>You don’t need a gym, special gear or a big block of time. Movement can happen all through the day, and even 5 minutes has real health benefits: a better mood, sharper focus, less stress and better sleep.</p>
+  </div>
+
+  <!-- The four levels. Each links to its own page; pages that aren't built yet are marked "soon". -->
+  <nav class="levels" aria-label="Move Your Way Iowa roles">
+    <a class="level current" href="/movers/" aria-current="page"><span class="t">Mover</span><span class="b">Fact Sheets</span></a>
+    <a class="level" href="/champions/"><span class="t">Champion</span><span class="b">Outreach Tips</span></a>
+    <a class="level" href="/ambassadors/"><span class="t">Ambassador</span><span class="b">Impact Options</span></a>
+    <a class="level" href="/leaders/"><span class="t">Leader</span><span class="b">Sector Info</span></a>
+  </nav>
+
+  <section>
+    <h2><span class="num">1</span>Keep these points in mind</h2>
+    <p class="lead">Physical activity is a reward, not a chore. Find what works for you, commit to an active lifestyle and keep moving.</p>
+    <div class="roles">
+      <div class="role"><h3>Some is better than none</h3><p>Every bit of movement counts, even 5 minutes at a time.</p></div>
+      <div class="role"><h3>The best activity is the one you’ll do</h3><p>Any activity beats sitting still. Pick something you enjoy.</p></div>
+      <div class="role"><h3>Lots of things count</h3><p>Playing, housework, gardening, walking the dog and taking the stairs all add up.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>Find your fact sheet</h2>
+    <p class="lead">Physical activity is for everyone. These fact sheets from the national <a href="https://odphp.health.gov/moveyourway" target="_blank" rel="noopener">Move Your Way®</a> campaign show how much activity you need and simple ways to get it, wherever you are in life.</p>
+    <p class="hint">Tap a circle to see who it’s for and open the fact sheet.</p>
+    <div class="sectors" id="sectors" role="list"></div>
+    <div class="detail" id="detail" aria-live="polite"></div>
+  </section>
+
+  <section>
+    <div class="pulse">
+      <div>
+        <h2><span class="num">3</span>Join the movement on GivePulse</h2>
+        <p>GivePulse is the <strong>Pulse of the Movement</strong>: it’s where the action happens. Joining is free, and it helps you:</p>
+        <ul>
+          <li><strong>Find ways to be active</strong> through events, group walks and resources near you.</li>
+          <li><strong>Connect with your county</strong> and with people who want to move more, too.</li>
+          <li><strong>Build an active culture</strong> in your community, and earn your Mover badge along the way.</li>
+        </ul>
+        <p style="margin:12px 0 0">Make your pledge at <a href="https://moveyourwayia.org" style="color:#fff;font-weight:700">moveyourwayia.org</a>, then select <strong>Join</strong> on the GivePulse page.</p>
+      </div>
+      <div class="join">
+        <a href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">
+          <img src="/assets/givepulse/MYWIA-Join-Button.png" alt="Join Move Your Way Iowa on GivePulse">
+        </a>
+        <a class="text" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Open the GivePulse page →</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="download">
+      <div>
+        <h3>Download all the fact sheets in one place</h3>
+        <p>A two-page PDF with the key points and links to all 10 fact sheets. Easy to print or share.</p>
+      </div>
+      <a class="btn primary" href="files/fact-sheets-overview.pdf" download>Download PDF</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Fact sheets are from the national Move Your Way® campaign of the Office of Disease Prevention and Health Promotion, with Iowa footers added. The Adolescents, College Students and Young Adults sheets are Iowa adaptations. MoveYourWayIA is the awareness campaign of the Iowa Physical Activity Plan, coordinated through the Active Living Workgroup of Healthy Iowans. Move Your Way® and the Move Your Way logo are registered service marks of the U.S. Department of Health and Human Services. Used with permission.</p>
+    <p>Questions: <a href="mailto:moveyourway@iastate.edu">moveyourway@iastate.edu</a></p>
+  </div>
+</footer>
+
+<script>
+/* ===== EDIT HERE: the 10 fact sheets. "file" is the PDF in the files/ folder. ===== */
+const SECTORS = [
+  {name:"Kids", who:"Ages 6–17", file:"files/fact-sheet-01.pdf", icon:"kid",
+   intro:"Get active every day for energy, confidence and better grades. Aim for 60 minutes a day with a mix of activities that build bones, muscles and heart."},
+  {name:"Adolescents", who:"Teens", file:"files/fact-sheet-02.pdf", icon:"teen",
+   intro:"Being active helps you look good and feel good: more confidence, sharper focus, less stress and better sleep. Get 60 minutes a day, with muscle and bone strengthening 3 days a week."},
+  {name:"College Students", who:"Students on campus", file:"files/fact-sheet-03.pdf", icon:"cap",
+   intro:"Activity helps you manage classes, deadlines and stress and builds resilience for mental health. Get 150 minutes a week plus 2 days of strength, with campus-friendly ideas."},
+  {name:"Young Adults", who:"Young adults", file:"files/fact-sheet-04.pdf", icon:"friends",
+   intro:"Make activity fun: rec leagues, trails, dance nights and time with friends. Get 150 minutes a week plus 2 days of muscle strengthening."},
+  {name:"Adults", who:"Adults", file:"files/fact-sheet-05.pdf", icon:"walk",
+   intro:"Feel better right away with a better mood, focus and sleep, and lower your long-term disease risk. Explains 150 minutes a week, 2 days of strength and the talk test."},
+  {name:"Parents", who:"Parents of kids and teens", file:"files/fact-sheet-06.pdf", icon:"family",
+   intro:"Help your kids get 60 minutes a day for better sleep, mood and grades. Includes tips for kids under 6, who need about 3 hours of movement a day."},
+  {name:"Older Adults", who:"Older adults", file:"files/fact-sheet-07.pdf", icon:"sun",
+   intro:"Staying active makes everyday tasks easier, eases pain and helps you stay independent. Aim for 150 minutes a week, 2 days of strength and balance activities."},
+  {name:"Fall Prevention and Function", who:"Older adults", file:"files/fact-sheet-08.pdf", icon:"balance",
+   intro:"Covers the 3 types of activity (aerobic, muscle-strengthening and balance) with easy ideas to try at home. Helps lower your risk of falls and keep everyday function."},
+  {name:"Pregnant", who:"During pregnancy", file:"files/fact-sheet-09.pdf", icon:"heart",
+   intro:"Activity during pregnancy is safe and healthy for you and your baby and lowers the risk of some complications. Covers 150 minutes a week and what to avoid."},
+  {name:"Postpartum", who:"After having a baby", file:"files/fact-sheet-10.pdf", icon:"stroller",
+   intro:"Ease back into activity to boost your mood and energy. Start with 5 minutes and build up to 150 minutes a week plus 2 days of strength."}
+];
+const COLORS = ["--c1","--c2","--c3","--c4","--c5"]; // each color used twice: 1-5, then 6-10
+
+const ICONS = {
+  kid:'<circle cx="12" cy="5" r="2.5"/><path d="M12 8v6M7 10l5 2 5-2M9 21l3-7 3 7"/>',
+  teen:'<circle cx="12" cy="5" r="2.5"/><path d="M12 8l-1 6 3 3v4M11 14l-4 3M8 10l4-1 3 3h3"/>',
+  cap:'<path d="M3 10 12 5l9 5-9 5z"/><path d="M7 12v4c0 1.5 2.5 3 5 3s5-1.5 5-3v-4"/>',
+  friends:'<circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M4 21v-5a4 4 0 0 1 8 0v5M12 21v-5a4 4 0 0 1 8 0v5"/>',
+  walk:'<circle cx="13" cy="4.5" r="2.2"/><path d="M12 8l-2 6 3 2 1 5M10 14l-3 7M9 10l3-2 3 4h3"/>',
+  family:'<circle cx="7" cy="6" r="2.3"/><circle cx="17" cy="6" r="2.3"/><circle cx="12" cy="12" r="1.8"/><path d="M4 21v-6a3 3 0 0 1 6 0M14 15a3 3 0 0 1 6 0v6M10 21v-3a2 2 0 0 1 4 0v3"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+  balance:'<circle cx="12" cy="4.5" r="2.2"/><path d="M12 7v7l-3 7M12 14l2 3 4-1M4 10h16"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  stroller:'<path d="M4 6h3l2 8h9l2-6H8"/><circle cx="10" cy="19" r="2"/><circle cx="17" cy="19" r="2"/>'
+};
+const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]}</svg>`;
+
+const grid = document.getElementById('sectors');
+const detail = document.getElementById('detail');
+
+SECTORS.forEach((s,i)=>{
+  const col = `var(${COLORS[i%5]})`;
+  const b = document.createElement('button');
+  b.className='sector'; b.setAttribute('role','listitem'); b.setAttribute('aria-expanded','false');
+  b.style.setProperty('--col',col);
+  b.innerHTML = `<span class="circle">${svg(s.icon)}</span><span class="label">${s.name}<small>${s.who}</small></span>`;
+  b.addEventListener('click',()=>open(i));
+  grid.appendChild(b);
+});
+
+function open(i){
+  const s = SECTORS[i], col = `var(${COLORS[i%5]})`;
+  [...grid.children].forEach((el,j)=>el.setAttribute('aria-expanded', j===i ? 'true':'false'));
+  detail.style.setProperty('--col',col);
+  detail.innerHTML = `
+    <button class="close" aria-label="Close" onclick="closeDetail()">×</button>
+    <div class="top"><span class="dot">${svg(s.icon)}</span>
+      <div><div class="meta">Fact sheet ${i+1} of 10 · ${s.who}</div><h3>${s.name}</h3></div></div>
+    <p>${s.intro}</p>
+    <a class="btn primary" href="${s.file}" target="_blank" rel="noopener">Open the fact sheet (PDF)</a>
+    <a class="btn ghost" href="https://iastate.givepulse.com/group/2031736-move-your-way-iowa" target="_blank" rel="noopener">Join on GivePulse</a>`;
+  detail.classList.add('open');
+  history.replaceState(null,'',`#sheet-${i+1}`);
+  detail.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function closeDetail(){
+  detail.classList.remove('open');
+  [...grid.children].forEach(el=>el.setAttribute('aria-expanded','false'));
+  history.replaceState(null,'',location.pathname);
+}
+// Deep links: /leaders/#sector-3 opens Education directly
+const m = location.hash.match(/^#sheet-(\d+)$/);
+if (m && +m[1]>=1 && +m[1]<=10) open(+m[1]-1);
+</script>
+</body>
+</html>
