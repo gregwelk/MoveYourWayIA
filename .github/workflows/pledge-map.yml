@@ -1,0 +1,71 @@
+name: Update pledge map
+
+# Keeps data/pledge-counts.csv (the tracker map's county totals) up to date.
+# - repository_dispatch "pledge": sent by the Power Automate flow for each new pledge, with the county.
+# - push to data/pledge-log.csv: a full resync uploaded from update-map.html.
+# - schedule: once a day, so "New in last 30 days" stays correct.
+# - workflow_dispatch: run by hand from the Actions tab (optionally adding one pledge).
+on:
+  repository_dispatch:
+    types: [pledge]
+  workflow_dispatch:
+    inputs:
+      county:
+        description: "County to add one pledge for (leave blank to only recalculate)"
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths: ["data/pledge-log.csv"]
+  schedule:
+    - cron: "17 11 * * *"
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update county totals
+        env:
+          COUNTY: ${{ github.event.client_payload.county || inputs.county }}
+          TZ: America/Chicago
+        run: |
+          git config user.name "MoveYourWayIA map bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          today=$(date +%F)
+          # Several pledges can arrive at once. Start from the newest copy each try, so none is lost.
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            python3 .github/scripts/update_pledge_counts.py --add "$COUNTY" --date "$today"
+            git add data/pledge-log.csv data/pledge-counts.csv
+            if git diff --cached --quiet; then
+              echo "Totals are already up to date."
+              exit 0
+            fi
+            git commit -q -m "Update pledge map totals"
+            if git push -q origin HEAD:main; then
+              echo "changed=true" >> "$GITHUB_ENV"
+              exit 0
+            fi
+            echo "Another update landed first; trying again ($attempt)."
+            sleep $((RANDOM % 6 + 2))
+          done
+          echo "::error::Could not save the totals after several tries."
+          exit 1
+
+      # Commits made by this workflow don't republish the site on their own, so ask for a rebuild.
+      # The map also reads the totals straight from the repository, so this is a backup.
+      - name: Ask GitHub Pages to republish
+        if: env.changed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

@@ -570,6 +570,7 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
   /* Live pledges: county totals from the Microsoft Form responses, saved as data/pledge-counts.csv (see update-map.html). */
   const PLEDGE_FORM_URL="https://forms.cloud.microsoft/r/CssxVd3um3";
   const PLEDGE_TOTALS_CSV="data/pledge-counts.csv";
+  const PLEDGE_TOTALS_LIVE="https://raw.githubusercontent.com/gregwelk/MoveYourWayIA/main/data/pledge-counts.csv";
   const G=[["Lyon","LYO",0,0],["Osceola","OSC",0,1],["Dickinson","DIC",0,2],["Emmet","EMM",0,3],["Kossuth","KOS",0,4,2],["Winnebago","WNB",0,5],["Worth","WOR",0,6],["Mitchell","MIT",0,7],["Howard","HOW",0,8],["Winneshiek","WNS",0,9],["Allamakee","ALL",0,10],
   ["Sioux","SIO",1,0],["O'Brien","OBR",1,1],["Clay","CLA",1,2],["Palo Alto","PAL",1,3],["Hancock","HAN",1,5],["Cerro Gordo","CGO",1,6],["Floyd","FLO",1,7],["Chickasaw","CHI",1,8],["Fayette","FAY",1,9,2],["Clayton","CLY",1,10,2],
   ["Plymouth","PLY",2,0],["Cherokee","CHE",2,1],["Buena Vista","BVI",2,2],["Pocahontas","POC",2,3],["Humboldt","HUM",2,4],["Wright","WRI",2,5],["Franklin","FRA",2,6],["Butler","BUT",2,7],["Bremer","BRE",2,8],
@@ -684,7 +685,9 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
   live.set(blank());
   const status=document.getElementById("liveStatus");
   {
-    fetch(PLEDGE_TOTALS_CSV,{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); }).then(txt=>{
+    /* The newest totals are in the repository within seconds of a pledge; the site's own copy is the fallback. */
+    const getCSV=u=>fetch(u,{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); });
+    getCSV(PLEDGE_TOTALS_LIVE).catch(()=>getCSV(PLEDGE_TOTALS_CSV)).then(txt=>{
       const rows=parseCSV(txt.replace(/^\uFEFF/,""));
       const h=(rows.shift()||[]).map(x=>x.trim().toLowerCase());
       const col=k=>h.indexOf(k), ic=col("county"), ii=col("individuals"), io=col("organizations"), inew=col("new_30_days"), il=col("last_pledge");

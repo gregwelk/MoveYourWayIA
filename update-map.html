@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Update the Pledge Map</title>
+<title>Resync the Pledge Map</title>
 <style>
 :root{--bg:#F7F8F2;--surface:#fff;--ink:#12302A;--muted:#4F5F57;--line:#DCE3D6;--brand:#0B5A4C;--gold:#F5CE4A;--warn:#FFF8E6;--warn-line:#E8D9A8;--ok:#EEF7EF;--ok-line:#9CC9A4}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1A17;--surface:#14261F;--ink:#EAF3EE;--muted:#A8BBB1;--line:#28403A;--brand:#1E8A74;--warn:#2A2410;--warn-line:#4D4320;--ok:#13291F;--ok-line:#2F5A43}}
@@ -27,8 +27,8 @@ ol{padding-left:22px}li{margin-bottom:6px}
 a{color:var(--brand)}
 </style>
 </head><body><main>
-<h1>Update the pledge map</h1>
-<p class="muted">For the MoveYourWayIA team. This page turns the Microsoft Forms responses into county totals for the website map. <b>Your file never leaves this computer:</b> only the 99 county counts are saved, with no names, emails or pledge text.</p>
+<h1>Resync the pledge map</h1>
+<p class="muted">For the MoveYourWayIA team. The map updates on its own when someone pledges. Use this page only to <b>resync</b> it with Microsoft Forms, for example after deleting test pledges or if the counts look off. <b>Your file never leaves this computer:</b> only each pledge’s date and county are saved, with no names, emails or pledge text.</p>
 
 <div class="card">
   <p class="step">Step 1 · Download the responses</p>
@@ -45,16 +45,16 @@ a{color:var(--brand)}
 </div>
 
 <div class="card">
-  <p class="step">Step 3 · Save the county totals</p>
-  <button class="btn" id="save" disabled>Download pledge-counts.csv</button>
+  <p class="step">Step 3 · Save the pledge list</p>
+  <button class="btn" id="save" disabled>Download pledge-log.csv</button>
 </div>
 
 <div class="card">
   <p class="step">Step 4 · Put it on the website</p>
   <ol>
     <li>Open the <a href="https://github.com/gregwelk/MoveYourWayIA/upload/main/data" target="_blank" rel="noopener">website’s data folder upload page on GitHub</a> (sign in if asked).</li>
-    <li>Drag <b>pledge-counts.csv</b> onto the page. It replaces the old file.</li>
-    <li>Click the green <b>Commit changes</b> button. The map updates in a minute or two.</li>
+    <li>Drag <b>pledge-log.csv</b> onto the page. It replaces the old file.</li>
+    <li>Click the green <b>Commit changes</b> button. The county totals are rebuilt and the map updates in a few minutes.</li>
   </ol>
 </div>
 
@@ -84,7 +84,8 @@ $("file").addEventListener("change",async e=>{
     const ci=head.findIndex(h=>/county/i.test(h));
     if(ci<0) throw new Error("Couldn't find a column with “County” in its title. Make sure question 3 in the form includes the word County.");
     const ti=["completion time","start time"].map(n=>head.findIndex(h=>h.toLowerCase()===n)).find(i=>i>=0);
-    const counts=Object.fromEntries(COUNTIES.map(c=>[c,{n:0,recent:0}]));
+    const counts=Object.fromEntries(COUNTIES.map(c=>[c,{n:0,recent:0}])); const log=[];
+    const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
     const cutoff=Date.now()-30*864e5; let last=null, total=0; const bad=[];
     rows.forEach((r,i)=>{
       if(r.every(v=>v==="")) return;
@@ -93,10 +94,12 @@ $("file").addEventListener("change",async e=>{
       counts[c].n++; total++;
       const d=ti===undefined?null:toDate(r[ti]);
       if(d){ if(d.getTime()>=cutoff) counts[c].recent++; if(!last||d>last) last=d; }
+      log.push([d?iso(d):"",c]);
     });
     const lastTxt=last?last.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"";
     const q=s=>/[",]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;
-    csv=["county,individuals,organizations,new_30_days,last_pledge",...COUNTIES.map(c=>[q(c),counts[c].n,0,counts[c].recent,q(lastTxt)].join(","))].join("\n")+"\n";
+    log.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:a[1].localeCompare(b[1]));
+    csv=["date,county",...log.map(([d,c])=>d+","+q(c))].join("\n")+"\n";
     const top=COUNTIES.filter(c=>counts[c].n).sort((a,b)=>counts[b].n-counts[a].n);
     $("result").innerHTML=
       `<div class="note ok"><b>${total}</b> pledge${total===1?"":"s"} counted in <b>${top.length}</b> of 99 counties.${lastTxt?` Latest: ${esc(lastTxt)}.`:""}</div>`+
@@ -112,7 +115,7 @@ $("save").addEventListener("click",()=>{
   if(!csv) return;
   const a=document.createElement("a");
   a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
-  a.download="pledge-counts.csv"; document.body.appendChild(a); a.click(); a.remove();
+  a.download="pledge-log.csv"; document.body.appendChild(a); a.click(); a.remove();
 });
 </script>
 </main></body></html>
