@@ -355,7 +355,7 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
             <ol style="margin:8px 0 0;padding-left:20px;font-size:14px;display:grid;gap:6px" class="muted">
               <li>Click <a href="https://forms.cloud.microsoft/r/CssxVd3um3" target="_blank" rel="noopener">Make a Pledge</a> and fill out the short form.</li>
               <li>Finish the sentence and choose your county.</li>
-              <li>During the pilot, county counts are updated regularly from the form.</li>
+              <li>County counts update automatically within minutes of each new pledge.</li>
               <li>Only county totals appear on the map. Email addresses are never shown.</li>
             </ol>
           </div>
@@ -696,7 +696,7 @@ footer .wrap{padding-block:24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify
       const d=blank(); let last="";
       rows.forEach(r=>{ const c=(r[ic]||"").trim(); if(d[c]) d[c]=[n(r[ii]),n(r[io]),POP[c],inew<0?0:n(r[inew])]; if(il>=0&&(r[il]||"").trim()) last=r[il].trim(); });
       live.set(d);
-      status.innerHTML=`<span><strong>Pilot counts</strong> from the MoveYourWayIA pledge form, updated regularly during the pilot.${last?` Latest pledge counted: ${esc(last)}.`:""}</span>`;
+      status.innerHTML=`<span><strong>Pledge counts</strong> from the MoveYourWayIA pledge form. The map updates automatically within minutes of each new pledge.${last?` Latest pledge counted: ${esc(last)}.`:""}</span>`;
     }).catch(()=>{
       status.innerHTML="<span><strong>Live counts couldn't load right now.</strong> Please try again later.</span>";
     });
