@@ -28,23 +28,27 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: main
 
       - name: Update county totals
         env:
-          COUNTY: ${{ github.event.client_payload.county || inputs.county }}
+          COUNTY: ${{ inputs.county }}
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
           TZ: America/Chicago
         run: |
           git config user.name "MoveYourWayIA map bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           today=$(date +%F)
+          if [ "$GITHUB_EVENT_NAME" = "repository_dispatch" ] && { [ "$PAYLOAD" = "null" ] || [ "$PAYLOAD" = "{}" ]; }; then
+            echo "::warning::A pledge event arrived with an empty Event Payload, so no county could be counted."
+          fi
           # Several pledges can arrive at once. Start from the newest copy each try, so none is lost.
           for attempt in 1 2 3 4 5 6 7 8; do
             git fetch -q origin main
             git reset -q --hard origin/main
-            python3 .github/scripts/update_pledge_counts.py --add "$COUNTY" --date "$today"
+            python3 .github/scripts/update_pledge_counts.py --add "$COUNTY" --payload "$PAYLOAD" --date "$today"
             git add data/pledge-log.csv data/pledge-counts.csv
             if git diff --cached --quiet; then
               echo "Totals are already up to date."

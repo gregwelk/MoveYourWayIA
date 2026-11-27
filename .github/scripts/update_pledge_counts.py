@@ -8,6 +8,7 @@ Usage: update_pledge_counts.py [--add "County name"] [--date YYYY-MM-DD]
 import argparse
 import csv
 import datetime
+import json
 import os
 import re
 import sys
@@ -36,6 +37,51 @@ def key(name):
 
 
 LOOKUP = {key(c): c for c in COUNTIES}
+
+
+def find_county(payload):
+    """Find a county anywhere in the event payload, whatever shape the sender used."""
+    try:
+        data = json.loads(payload)
+    except (TypeError, ValueError):
+        data = payload
+    stack = [data]
+    while stack:
+        v = stack.pop()
+        if isinstance(v, dict):
+            stack.extend(v.values())
+        elif isinstance(v, list):
+            stack.extend(v)
+        elif isinstance(v, str):
+            if key(v) in LOOKUP:
+                return LOOKUP[key(v)]
+            t = v.strip()
+            if t[:1] in "{[":
+                try:
+                    stack.append(json.loads(t))
+                except ValueError:
+                    pass
+    return None
+
+
+def describe(payload):
+    """Summarize what was sent for the public run log, without showing emails or long answers."""
+    try:
+        data = json.loads(payload)
+    except (TypeError, ValueError):
+        data = payload
+
+    def show(v):
+        if isinstance(v, dict):
+            return "{" + ", ".join(f"{k}: {show(x)}" for k, x in v.items()) + "}"
+        if isinstance(v, list):
+            return "[" + ", ".join(show(x) for x in v) + "]"
+        t = str(v)
+        if "@" in t or len(t) > 30:
+            return f"<{len(t)} characters hidden>"
+        return repr(t)
+
+    return show(data)[:300]
 
 
 def read_log():
@@ -91,18 +137,23 @@ def write_counts(rows, today):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--add", default="", help="county to add one pledge for")
+    ap.add_argument("--payload", default="", help="raw event payload (JSON) to search for a county")
     ap.add_argument("--date", default="", help="today's date (YYYY-MM-DD); defaults to the system date")
     a = ap.parse_args()
     today = datetime.date.fromisoformat(a.date) if a.date else datetime.date.today()
 
     rows = read_log()
-    if a.add.strip():
-        county = LOOKUP.get(key(a.add))
+    payload = a.payload.strip()
+    if payload in ("null", "{}", '""'):
+        payload = ""
+    if a.add.strip() or payload:
+        county = LOOKUP.get(key(a.add)) or find_county(payload)
         if county:
             rows.append((today, county))
             print(f"Added one pledge for {county} County on {today}.")
         else:
-            print(f"::warning::No pledge added: county not recognized ({a.add!r}). Totals were only recalculated.")
+            got = describe(a.add.strip() or payload)
+            print(f"::warning::No pledge added: no county found in what was sent ({got}). Totals were only recalculated.")
     rows.sort(key=lambda r: (r[0] or datetime.date.min, r[1]))
     write_log(rows)
     n, counties = write_counts(rows, today)
